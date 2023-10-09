@@ -25,15 +25,10 @@ end
 class Trabajador
 end
 
-class Normal
-end
-
-class VIP
-end
-
 class Cliente
 attributes
 totalGastadoPedidos : Integer
+VIP : Boolean
 end
 
 class Pedido
@@ -74,4 +69,24 @@ end
 association GenEmpleadoTrabajador between
 Empleado [1] role Empleado
 Trabajador [1] role Trabajador
+end
+
+association Pide between
+Cliente [1] role Comprador
+Pedido [*] role Encargo
+end
+
+association Dirige between
+Director [1] role Empleado1
+Empresa [0..3] role Compania1
+end
+
+association Gerenta between
+Gerente [1] role Empleado2
+Empresa [0..3] role Compania2
+end
+
+association TrabajaEn between
+Trabajador [1..*] role Empleado3
+Empresa [0..3] role Compania3
 end
