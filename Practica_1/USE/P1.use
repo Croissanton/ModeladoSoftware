@@ -50,3 +50,28 @@ end
 
 class Almacen
 end
+
+association GenPersonaEmpleado between
+Persona [1] role Persona
+Empleado [1] role Empleado
+end
+
+association GenPersonaCliente between
+Persona [1] role Persona
+Cliente [1] role Cliente
+end
+
+association GenEmpleadoDirector between
+Empleado [1] role Empleado
+Director [1] role Director
+end
+
+association GenEmpleadoGerente between
+Empleado [1] role Empleado
+Gerente [1] role Gerente
+end
+
+association GenEmpleadoTrabajador between
+Empleado [1] role Empleado
+Trabajador [1] role Trabajador
+end
