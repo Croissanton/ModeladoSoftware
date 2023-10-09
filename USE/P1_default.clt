@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram_Layout version="13">
+    <diagramOptions>
+        <autolayout>false</autolayout>
+        <antialiasing>false</antialiasing>
+        <showassocnames>false</showassocnames>
+        <showattributes>true</showattributes>
+        <showmultiplicities>false</showmultiplicities>
+        <showoperations>false</showoperations>
+        <showrolenames>true</showrolenames>
+        <showgrid>false</showgrid>
+    </diagramOptions>
+    <node id="Empleado" sizeCalculated="true" type="Class">
+        <name>Empleado</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+            <x>116.0</x>
+            <y>14.0</y>
+        </strategy>
+        <hidden>false</hidden>
+    </node>
+    <node id="Empresa" sizeCalculated="true" type="Class">
+        <name>Empresa</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+            <x>233.0</x>
+            <y>63.0</y>
+        </strategy>
+        <hidden>false</hidden>
+    </node>
+    <node id="Persona" sizeCalculated="true" type="Class">
+        <name>Persona</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+            <x>193.0</x>
+            <y>151.0</y>
+        </strategy>
+        <hidden>false</hidden>
+    </node>
+    <node id="Gerente" sizeCalculated="true" type="Class">
+        <name>Gerente</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+            <x>35.0</x>
+            <y>47.0</y>
+        </strategy>
+        <hidden>false</hidden>
+    </node>
+    <node id="Director" sizeCalculated="true" type="Class">
+        <name>Director</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+            <x>38.0</x>
+            <y>87.0</y>
+        </strategy>
+        <hidden>false</hidden>
+    </node>
+    <node id="Trabajador" sizeCalculated="true" type="Class">
+        <name>Trabajador</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+            <x>56.0</x>
+            <y>159.0</y>
+        </strategy>
+        <hidden>false</hidden>
+    </node>
+</diagram_Layout>

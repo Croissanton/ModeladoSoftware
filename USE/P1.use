@@ -1,0 +1,52 @@
+model P1
+
+class Empresa
+attributes
+ValorMinPedido : Integer
+end
+
+class Persona
+attributes
+Nombre : String
+DNI : String
+end
+
+class Empleado
+attributes
+Salario : Integer
+end
+
+class Director
+end
+
+class Gerente
+end
+
+class Trabajador
+end
+
+class Normal
+end
+
+class VIP
+end
+
+class Cliente
+attributes
+totalGastadoPedidos : Integer
+end
+
+class Pedido
+attributes
+NumArticulos : Integer
+Precio : Integer
+end
+
+class Producto
+attributes
+Codigo : String
+Precio : Integer
+end
+
+class Almacen
+end
