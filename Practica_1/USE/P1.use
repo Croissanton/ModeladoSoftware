@@ -2,7 +2,7 @@ model P1
 
 class Empresa
 attributes
-ValorMinPedido : Integer
+ValorMinPedido : Real
 end
 
 class Persona
@@ -11,64 +11,39 @@ Nombre : String
 DNI : String
 end
 
-class Empleado
+class Empleado < Persona
 attributes
-Salario : Integer
+Salario : Real
 end
 
-class Director
+class Director < Empleado
 end
 
-class Gerente
+class Gerente < Empleado
 end
 
-class Trabajador
+class Trabajador < Empleado
 end
 
-class Cliente
+class Cliente < Persona
 attributes
-totalGastadoPedidos : Integer
+totalGastadoPedidos : Real
 VIP : Boolean
 end
 
 class Pedido
 attributes
 NumArticulos : Integer
-Precio : Integer
+Precio : Real
 end
 
 class Producto
 attributes
 Codigo : String
-Precio : Integer
+Precio : Real
 end
 
 class Almacen
-end
-
-association GenPersonaEmpleado between
-Persona [1] role Persona
-Empleado [1] role Empleado
-end
-
-association GenPersonaCliente between
-Persona [1] role Persona
-Cliente [1] role Cliente
-end
-
-association GenEmpleadoDirector between
-Empleado [1] role Empleado
-Director [1] role Director
-end
-
-association GenEmpleadoGerente between
-Empleado [1] role Empleado
-Gerente [1] role Gerente
-end
-
-association GenEmpleadoTrabajador between
-Empleado [1] role Empleado
-Trabajador [1] role Trabajador
 end
 
 association Pide between
@@ -77,16 +52,36 @@ Pedido [*] role Encargo
 end
 
 association Dirige between
-Director [1] role Empleado1
+Director [1] role Director
 Empresa [0..3] role Compania1
 end
 
 association Gerenta between
-Gerente [1] role Empleado2
+Gerente [1] role Gerente
 Empresa [0..3] role Compania2
 end
 
 association TrabajaEn between
-Trabajador [1..*] role Empleado3
+Trabajador [1..*] role Trabajador
 Empresa [0..3] role Compania3
+end
+
+association Tiene between
+Empresa [*] role Empresa
+Almacen [*] role Almacen
+end
+
+aggregation AlmacenProducto between
+Almacen [*] role Almacen
+Producto [*] role Producto
+end
+
+aggregation PedidoProducto between
+Pedido [*] role Pedido
+Producto [0..*] role Producto
+end
+
+association Compra between
+Cliente [*] role Cliente
+Producto [0..10] role Producto
 end
