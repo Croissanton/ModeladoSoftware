@@ -39,11 +39,17 @@ end
 
 class Producto
 attributes
+Tipo : String
 Codigo : String
 Precio : Real
 end
 
 class Almacen
+end
+
+class Articulo < Producto
+attributes
+Cantidad : Integer
 end
 
 association Pide between
@@ -76,12 +82,16 @@ Almacen [*] role Almacen
 Producto [*] role Producto
 end
 
-aggregation PedidoProducto between
+aggregation PedidoArticulo between
 Pedido [*] role Pedido
-Producto [0..*] role Producto
+Articulo [1..*] role Articulo
 end
 
-association Compra between
+association TieneProductos between
 Cliente [*] role Cliente
 Producto [0..10] role Producto
 end
+
+constraints
+context Cliente inv esVIP:
+self.VIP = self.totalGastadoPedidos > 1000

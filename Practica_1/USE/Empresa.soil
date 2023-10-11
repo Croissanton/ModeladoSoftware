@@ -1,0 +1,14 @@
+reset
+
+!new Cliente
+!new Pedido
+!new Producto
+
+!Cliente1.totalGastadoPedidos := 1001
+
+!Pedido1.NumArticulos := 6
+
+!Producto1.Codigo := pro1
+
+
+check
