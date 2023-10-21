@@ -1,14 +1,35 @@
 reset
 
-!new Cliente
-!new Pedido
-!new Producto
+!-- Empresa creation
+!new Empresa('Empresa1')
+!Empresa1.ValorMinPedido := 100
 
-!Cliente1.totalGastadoPedidos := 1001
+!-- Personas creation
+!new Director('Director1')
+!Director1.Nombre := 'Dir John'
+!Director1.DNI := 'D123'
+!Director1.Salario := 3000
 
-!Pedido1.NumArticulos := 6
+!new Gerente('Gerente1')
+!Gerente1.Nombre := 'Ger John'
+!Gerente1.DNI := 'G123'
+!Gerente1.Salario := 2000
 
-!Producto1.Codigo := pro1
+!new Trabajador('Trabajador1')
+!Trabajador1.Nombre := 'Trab John'
+!Trabajador1.DNI := 'T123'
+!Trabajador1.Salario := 1500
 
+!new Cliente('Cliente1')
+!Cliente1.Nombre := 'Cli John'
+!Cliente1.DNI := 'C123'
+!Cliente1.totalGastadoPedidos := 1200
+!Cliente1.VIP := true
 
+!-- Relations
+!insert (Director1, Empresa1) into Dirige
+!insert (Gerente1, Empresa1) into Gerenta
+!insert (Trabajador1, Empresa1) into TrabajaEn
+
+!-- To check constraints
 check
