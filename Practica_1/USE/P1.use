@@ -9,7 +9,7 @@ class Persona
 attributes
 Nombre : String
 DNI : String
-VIP : Integer
+VIP : Boolean
 end
 
 class Empleado < Persona
@@ -54,7 +54,7 @@ Cantidad : Integer
 end
 
 association Pide between
-Cliente [1] role Comprador
+Cliente [1] role Cliente
 Pedido [*] role Encargo
 end
 
