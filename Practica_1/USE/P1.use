@@ -84,7 +84,7 @@ Producto [*] role Producto
 end
 
 aggregation PedidoArticulo between
-Pedido [*] role Pedido
+Pedido [1] role Pedido
 Articulo [1..*] role Articulo
 end
 
