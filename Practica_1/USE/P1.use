@@ -9,11 +9,13 @@ class Persona
 attributes
 Nombre : String
 DNI : String
+VIP : Integer
 end
 
 class Empleado < Persona
 attributes
 Salario : Real
+numTrabajos : Integer
 end
 
 class Director < Empleado
@@ -28,7 +30,6 @@ end
 class Cliente < Persona
 attributes
 totalGastadoPedidos : Real
-VIP : Boolean
 end
 
 class Pedido
@@ -112,4 +113,13 @@ context Empresa inv gerentedifferentFromTrabajador:
 Trabajador.allInstances()->forAll(w | w.DNI <> self.Gerente.DNI)
     
 context Cliente inv VIPclients: 
+self.VIP = true
+
+context Empleado inv minNumTrabajos:
+self.numTrabajos > 0
+
+context Empleado inv maxNumTrabajos:
+self.numTrabajos <= 3
+
+context Empleado inv siempreVIP:
 self.VIP = true

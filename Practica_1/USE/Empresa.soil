@@ -4,6 +4,11 @@ reset
 !new Empresa('Empresa1')
 !Empresa1.ValorMinPedido := 100
 
+!-- Relations
+!insert (Director1, Empresa1) into Dirige
+!insert (Gerente1, Empresa1) into Gerenta
+!insert (Trabajador1, Empresa1) into TrabajaEn
+
 !-- Personas creation
 !new Director('Director1')
 !Director1.Nombre := 'Dir John'
@@ -26,10 +31,6 @@ reset
 !Cliente1.totalGastadoPedidos := 1200
 !Cliente1.VIP := true
 
-!-- Relations
-!insert (Director1, Empresa1) into Dirige
-!insert (Gerente1, Empresa1) into Gerenta
-!insert (Trabajador1, Empresa1) into TrabajaEn
 
 !-- To check constraints
 check
