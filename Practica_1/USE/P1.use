@@ -96,20 +96,20 @@ constraints
 context Cliente inv esVIP:
 self.VIP = self.totalGastadoPedidos > 1000
 
-context Director inv differentFromGerente:
-Director.allInstances()->forAll(d1, d2 | d1 <> d2 implies d1.Gerente <> d2.Gerente)
-  
-context Gerente inv differentFromTrabajador:
-Gerente.allInstances()->forAll(g1, g2 | g1 <> g2 implies g1.Trabajador <> g2.Trabajador)
+context Empresa inv gerenteSalaryHigherThanWorker: 
+Trabajador.allInstances()->forAll(w | w.Salario < self.Gerente.Salario)
 
-context Director inv directorSalaryHigherThanManager:
-self.Salario > self.Gerente.Salario
-  
-context Trabajador inv differentFromDirector:
-Trabajador.allInstances()->forAll(t1, t2 | t1 <> t2 implies t1.Director <> t2.Director)
+context Empresa inv directorSalaryHigherThanManager:
+self.Director.Salario > self.Gerente.Salario
 
-context Gerente inv gerenteSalaryHigherThanWorker: 
-self.Salario > self.Trabajador.Salario
+context Empresa inv directorDifferentFromGerente:
+self.Director.DNI <> self.Gerente.DNI
+  
+context Empresa inv directorDifferentFromTrabajador:
+Trabajador.allInstances()->forAll(w | w.DNI <> self.Director.DNI)
+  
+context Empresa inv gerentedifferentFromTrabajador:
+Trabajador.allInstances()->forAll(w | w.DNI <> self.Gerente.DNI)
     
 context Cliente inv VIPclients: 
 self.VIP = true
