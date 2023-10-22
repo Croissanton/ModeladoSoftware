@@ -123,5 +123,8 @@ self.numTrabajos <= 3
 context Empleado inv siempreVIP:
 self.VIP = true
 
+context Cliente inv esVIP:
+self.VIP = self.totalGastadoPedidos > 1000
+
 context Pedido inv precioMinPedido:
 self.Precio >= self.Empresa.ValorMinPedido
