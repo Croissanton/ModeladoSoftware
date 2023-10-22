@@ -16,6 +16,9 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_UwAEsG_oEe6eqIPAjVvgkQ" name="DNI" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_UJlQIHD0Ee6lWbKdExHeyw" name="VIP">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_npt5gG_kEe6eqIPAjVvgkQ" name="Empleado">
     <ownedRule xmi:type="uml:Constraint" xmi:id="_KUasEG_nEe6eqIPAjVvgkQ" name="Director != Gerente">
@@ -52,9 +55,6 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_YAflEG_oEe6eqIPAjVvgkQ" name="salario" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_aMxPYG_oEe6eqIPAjVvgkQ" name="VIP" visibility="private">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
-    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_oW4hgG_kEe6eqIPAjVvgkQ" name="Cliente">
     <ownedRule xmi:type="uml:Constraint" xmi:id="_8VSz4G_oEe6eqIPAjVvgkQ" name="self.VIP = self.totalGastado >1000">
@@ -66,9 +66,6 @@
     <generalization xmi:type="uml:Generalization" xmi:id="_tJmCkG_kEe6eqIPAjVvgkQ" general="_mtSGcG_kEe6eqIPAjVvgkQ"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_hUxM0G_oEe6eqIPAjVvgkQ" name="totalGastadoPedidos" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_kWlYAG_oEe6eqIPAjVvgkQ" name="VIP" visibility="private">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_vFGtAG_kEe6eqIPAjVvgkQ" name="Director">
@@ -86,16 +83,23 @@
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_7OF4EG_kEe6eqIPAjVvgkQ" name="Almacen"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_9ZUZgG_kEe6eqIPAjVvgkQ" name="Producto">
+  <packagedElement xmi:type="uml:Class" xmi:id="_9ZUZgG_kEe6eqIPAjVvgkQ" name="Producto" visibility="package">
     <generalization xmi:type="uml:Generalization" xmi:id="_liQL0G_mEe6eqIPAjVvgkQ" general="_CHOTEG_lEe6eqIPAjVvgkQ"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_rbOfcG_oEe6eqIPAjVvgkQ" name="precio" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
     </ownedAttribute>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_CHOTEG_lEe6eqIPAjVvgkQ" name="TipoProducto">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_vS9mAG_oEe6eqIPAjVvgkQ" name="codigo" visibility="private">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_3r7jwHDzEe6lWbKdExHeyw" name="codigo">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_55LecHDzEe6lWbKdExHeyw" name="tipo">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CHOTEG_lEe6eqIPAjVvgkQ" name="Articulo">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_vS9mAG_oEe6eqIPAjVvgkQ" name="cantidad" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JLiOMHD0Ee6lWbKdExHeyw" name="pedido" type="_EfRIgG_lEe6eqIPAjVvgkQ" association="_JLfx8HD0Ee6lWbKdExHeyw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_EfRIgG_lEe6eqIPAjVvgkQ" name="Pedido">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_zD9ycG_oEe6eqIPAjVvgkQ" name="numArticulos">
@@ -167,7 +171,7 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xBVeQG_mEe6eqIPAjVvgkQ"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xBl88G_mEe6eqIPAjVvgkQ" value="*"/>
     </ownedEnd>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_sNXY82_mEe6eqIPAjVvgkQ" name="tipoProducto" type="_CHOTEG_lEe6eqIPAjVvgkQ" association="_sNWx4G_mEe6eqIPAjVvgkQ">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_sNXY82_mEe6eqIPAjVvgkQ" name="tipoProducto" type="_9ZUZgG_kEe6eqIPAjVvgkQ" association="_sNWx4G_mEe6eqIPAjVvgkQ">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_vVhcsG_mEe6eqIPAjVvgkQ"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_vziOYG_mEe6eqIPAjVvgkQ" value="10"/>
     </ownedEnd>
@@ -190,6 +194,14 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DxH-MG_nEe6eqIPAjVvgkQ" value="*"/>
     </ownedEnd>
     <ownedEnd xmi:type="uml:Property" xmi:id="_9JxPsW_mEe6eqIPAjVvgkQ" name="cliente" type="_oW4hgG_kEe6eqIPAjVvgkQ" association="_9JwooG_mEe6eqIPAjVvgkQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JLfx8HD0Ee6lWbKdExHeyw" memberEnd="_JLiOMHD0Ee6lWbKdExHeyw _JLnGsHD0Ee6lWbKdExHeyw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JLhnIHD0Ee6lWbKdExHeyw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JLhnIXD0Ee6lWbKdExHeyw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JLnGsHD0Ee6lWbKdExHeyw" name="articulo" type="_CHOTEG_lEe6eqIPAjVvgkQ" association="_JLfx8HD0Ee6lWbKdExHeyw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_OdWtIHD0Ee6lWbKdExHeyw" value="*"/>
+    </ownedEnd>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_bdTqMG_oEe6eqIPAjVvgkQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_bdWtgG_oEe6eqIPAjVvgkQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
