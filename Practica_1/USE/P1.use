@@ -93,10 +93,12 @@ Cliente [*] role Cliente
 Producto [0..10] role Producto
 end
 
-constraints
-context Cliente inv esVIP:
-self.VIP = self.totalGastadoPedidos > 1000
+association Vende between
+Empresa [1] role Empresa
+Pedido [1..*] role Pedido
+end
 
+constraints
 context Empresa inv gerenteSalaryHigherThanWorker: 
 Trabajador.allInstances()->forAll(w | w.Salario < self.Gerente.Salario)
 
@@ -111,9 +113,6 @@ Trabajador.allInstances()->forAll(w | w.DNI <> self.Director.DNI)
   
 context Empresa inv gerentedifferentFromTrabajador:
 Trabajador.allInstances()->forAll(w | w.DNI <> self.Gerente.DNI)
-    
-context Cliente inv VIPclients: 
-self.VIP = true
 
 context Empleado inv minNumTrabajos:
 self.numTrabajos > 0
@@ -123,3 +122,6 @@ self.numTrabajos <= 3
 
 context Empleado inv siempreVIP:
 self.VIP = true
+
+context Pedido inv precioMinPedido:
+self.Precio >= self.Empresa.ValorMinPedido

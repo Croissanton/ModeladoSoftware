@@ -1,36 +1,64 @@
 reset
 
-!-- Empresa creation
-!new Empresa('Empresa1')
-!Empresa1.ValorMinPedido := 100
-
-!-- Relations
-!insert (Director1, Empresa1) into Dirige
-!insert (Gerente1, Empresa1) into Gerenta
-!insert (Trabajador1, Empresa1) into TrabajaEn
-
 !-- Personas creation
-!new Director('Director1')
+!new Director
 !Director1.Nombre := 'Dir John'
 !Director1.DNI := 'D123'
+!Director1.VIP := true
 !Director1.Salario := 3000
+!Director1.numTrabajos := 1
 
-!new Gerente('Gerente1')
+!new Gerente
 !Gerente1.Nombre := 'Ger John'
 !Gerente1.DNI := 'G123'
+!Gerente1.VIP := true
 !Gerente1.Salario := 2000
+!Gerente1.numTrabajos := 1
 
-!new Trabajador('Trabajador1')
+!new Trabajador
 !Trabajador1.Nombre := 'Trab John'
 !Trabajador1.DNI := 'T123'
+!Trabajador1.VIP := true
 !Trabajador1.Salario := 1500
+!Trabajador1.numTrabajos := 1
 
-!new Cliente('Cliente1')
+!new Cliente
 !Cliente1.Nombre := 'Cli John'
 !Cliente1.DNI := 'C123'
 !Cliente1.totalGastadoPedidos := 1200
 !Cliente1.VIP := true
 
+!new Pedido
+!Pedido1.NumArticulos := 8
+!Pedido1.Precio := 800
+
+!new Producto
+!Producto1.Tipo := 'Martillo'
+!Producto1.Codigo := '1'
+!Producto1.Precio := 100
+
+!new Articulo
+!Articulo1.Tipo := 'Martillo'
+!Articulo1.Codigo := '1'
+!Articulo1.Precio := 100
+!Articulo1.Cantidad := 8
+
+!-- Empresa creation
+!new Empresa
+!Empresa1.ValorMinPedido := 100
+
+!new Almacen
+
+!-- Relations
+!insert (Director1, Empresa1) into Dirige
+!insert (Gerente1, Empresa1) into Gerenta
+!insert (Trabajador1, Empresa1) into TrabajaEn
+!insert (Empresa1, Almacen1) into Tiene
+!insert (Cliente1, Pedido1) into Pide
+!insert (Cliente1, Producto1) into TieneProductos
+!insert (Pedido1, Articulo1) into PedidoArticulo
+!insert (Pedido1, Empresa1) into Vende
+!insert (Producto1, Almacen1) into AlmacenProducto
 
 !-- To check constraints
 check
