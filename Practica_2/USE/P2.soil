@@ -1,0 +1,20 @@
+reset
+!new Estacion('e5')
+!new Estacion('e6')
+
+!new Segmento('s5')
+!new Segmento('sa')
+
+!new Linea('L2')
+!new Linea('L3')
+
+!insert(s5,e5) into SegmentoEstacion
+!insert(s5,e6) into SegmentoEstacion
+!insert(sa,e5) into SegmentoEstacion
+!insert(sa,e6) into SegmentoEstacion
+
+!insert(L2,s5) into LineaSegmento
+!insert(L2,sa) into LineaSegmento
+!insert(L3,sa) into LineaSegmento
+
+check

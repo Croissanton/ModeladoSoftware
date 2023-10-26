@@ -1,0 +1,83 @@
+model P2
+
+class Clock
+    attributes
+
+        NOW: Integer init = 0
+        resolution: Integer init = 1
+
+    operations
+        tick()
+            begin
+                self.NOW := self.NOW + self.resolution;
+                for o in self.ao do
+                    o.tick()
+                end;
+            end
+        
+        run(n:Integer)
+            begin
+                for i in Sequence{1..n} do
+                    self.tick()
+                end
+            end
+end
+
+abstract class ActiveObject
+    operations
+        tick() begin end
+end
+
+class Tren < ActiveObject
+end
+
+class Segmento
+    attributes
+        viaNormalOcupada :  Boolean
+        viaContrariaOcupada : Boolean
+end
+
+class Estacion
+    
+end
+
+class Linea
+    
+end
+
+--class Via
+--end
+
+aggregation LineaSegmento between
+    Linea [*] role linea
+    Segmento [*] role segmento
+end
+
+aggregation SegmentoEstacion between
+    Segmento [*] role segmento
+    Estacion [2] role estacion
+end
+
+--composition SegmentoVia between
+   -- Segmento [1] role segmento
+   -- Via [2] role via
+--end
+
+association Circula between
+    Tren [0..2] role tren
+    Segmento [0..1] role segmento
+end
+
+association Estaciona between
+    Tren [*] role tren
+    Estacion [0..1] role estacion
+end
+
+association Time between
+    Clock [1] 
+    ActiveObject [*] role ao ordered
+end
+
+constraints
+    context Estacion inv LineasDistintas:
+        self.segmento->forAll(s1,s2 | s1 = s2 or s1.linea->excludesAll(s2.linea) )
