@@ -29,12 +29,15 @@ abstract class ActiveObject
 end
 
 class Tren < ActiveObject
+    attributes
+        direccionNormal : Boolean init: true
+        averiado : Boolean init: false
 end
 
 class Segmento
     attributes
-        viaNormalOcupada :  Boolean
-        viaContrariaOcupada : Boolean
+        viaNormalOcupada :  Boolean init: false
+        viaContrariaOcupada : Boolean init: false
 end
 
 class Estacion
@@ -73,6 +76,21 @@ association Estaciona between
     Estacion [0..1] role estacion
 end
 
+association PerteneceA between
+    Tren [1..*] role tren
+    Linea [1] role linea
+end
+
+association PrincipioDe between
+    Estacion [1] role principio
+    Linea [*] role lineaPrincipio
+end
+
+association FinalDe between
+    Estacion [1] role final
+    Linea [*] role lineaFinal
+end
+
 association Time between
     Clock [1] 
     ActiveObject [*] role ao ordered
@@ -80,4 +98,13 @@ end
 
 constraints
     context Estacion inv LineasDistintas:
-        self.segmento->forAll(s1,s2 | s1 = s2 or s1.linea->excludesAll(s2.linea) )
+        (self.segmento->size() = 1) or (self.segmento->forAll(s1,s2 | s1 = s2 or s1.linea->excludesAll(s2.linea)))
+
+    context Tren inv PuedeCircular:
+        (not self.averiado) and (self.segmento = null) and 
+        ((self.direccionNormal and not self.segmento.viaNormalOcupada) or
+        (not self.direccionNormal and not self.segmento.viaContrariaOcupada))
+
+    context Tren inv DireccionValida:
+        (not (self.linea.principio = self.estacion) or not self.direccionNormal) or 
+        (not (self.linea.final = self.estacion) or self.direccionNormal) 

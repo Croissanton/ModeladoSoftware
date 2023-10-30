@@ -1,20 +1,90 @@
 reset
+!new Estacion('e1')
+!new Estacion('e2')
+!new Estacion('e3')
+!new Estacion('e4')
 !new Estacion('e5')
 !new Estacion('e6')
+!new Estacion('e8')
 
+!new Segmento('s0')
+!new Segmento('s1')
+!new Segmento('s2')
+!new Segmento('s4')
 !new Segmento('s5')
+!new Segmento('s8')
+!new Segmento('s9')
 !new Segmento('sa')
 
+!new Linea('L1')
 !new Linea('L2')
 !new Linea('L3')
 
+!new Tren('TL1_1')
+!new Tren('TL1_2')
+!new Tren('TL2_1')
+!new Tren('TL2_2')
+!new Tren('TL3_1')
+!new Tren('TL3_2')
+
+!insert(s0,e4) into SegmentoEstacion
+!insert(s0,e1) into SegmentoEstacion
+
+!insert(s1,e1) into SegmentoEstacion
+!insert(s1,e2) into SegmentoEstacion
+
+!insert(s2,e2) into SegmentoEstacion
+!insert(s2,e3) into SegmentoEstacion
+
+!insert(s4,e1) into SegmentoEstacion
+!insert(s4,e5) into SegmentoEstacion
+
 !insert(s5,e5) into SegmentoEstacion
 !insert(s5,e6) into SegmentoEstacion
+
+!insert(s8,e4) into SegmentoEstacion
+!insert(s8,e8) into SegmentoEstacion
+
+!insert(s9,e8) into SegmentoEstacion
+!insert(s9,e5) into SegmentoEstacion
+
 !insert(sa,e5) into SegmentoEstacion
 !insert(sa,e6) into SegmentoEstacion
 
+----------------------------------------------------------------------
+
+!insert(L1,s0) into LineaSegmento
+!insert(L1,s1) into LineaSegmento
+!insert(L1,s2) into LineaSegmento
+
+!insert(L2,s0) into LineaSegmento
+!insert(L2,s4) into LineaSegmento
 !insert(L2,s5) into LineaSegmento
-!insert(L2,sa) into LineaSegmento
+
+!insert(L2,s8) into LineaSegmento
+!insert(L2,s9) into LineaSegmento
 !insert(L3,sa) into LineaSegmento
+
+-----------------------------------------------------------------------
+
+!insert(TL1_1,L1) into PerteneceA
+!insert(TL1_2,L1) into PerteneceA
+
+!insert(TL2_1,L2) into PerteneceA
+!insert(TL2_2,L2) into PerteneceA
+
+!insert(TL3_1,L3) into PerteneceA
+!insert(TL3_2,L3) into PerteneceA
+
+-------------------------------------------------------------------------
+
+!insert(e4,L1) into PrincipioDe
+!insert(e4,L2) into PrincipioDe
+!insert(e4,L3) into PrincipioDe
+
+!insert(e3,L1) into FinalDe
+!insert(e6,L2) into PrincipioDe
+!insert(e6,L3) into PrincipioDe
+
 
 check
