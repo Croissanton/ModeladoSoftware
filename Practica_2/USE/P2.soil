@@ -83,8 +83,8 @@ reset
 !insert(e4,L3) into PrincipioDe
 
 !insert(e3,L1) into FinalDe
-!insert(e6,L2) into PrincipioDe
-!insert(e6,L3) into PrincipioDe
+!insert(e6,L2) into FinalDe
+!insert(e6,L3) into FinalDe
 
 
 check

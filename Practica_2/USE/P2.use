@@ -48,9 +48,6 @@ class Linea
     
 end
 
---class Via
---end
-
 aggregation LineaSegmento between
     Linea [*] role linea
     Segmento [*] role segmento
@@ -60,11 +57,6 @@ aggregation SegmentoEstacion between
     Segmento [*] role segmento
     Estacion [2] role estacion
 end
-
---composition SegmentoVia between
-   -- Segmento [1] role segmento
-   -- Via [2] role via
---end
 
 association Circula between
     Tren [0..2] role tren
@@ -97,13 +89,15 @@ association Time between
 end
 
 constraints
-    context Estacion inv LineasDistintas:
-        (self.segmento->size() = 1) or (self.segmento->forAll(s1,s2 | s1 = s2 or s1.linea->excludesAll(s2.linea)))
+    context Segmento inv LineasDistintas:
+        self.estacion->asSequence()->at(1).segmento->intersection(self.estacion->asSequence()->at(2).segmento)->forAll(s1, s2 | s1 = s2 or s1.linea <> s2.linea)
+
 
     context Tren inv PuedeCircular:
-        (not self.averiado) and (self.segmento = null) and 
-        ((self.direccionNormal and not self.segmento.viaNormalOcupada) or
-        (not self.direccionNormal and not self.segmento.viaContrariaOcupada))
+        (not self.averiado) and (self.segmento = null) and
+        
+        ((self.direccionNormal and not self.estacion.segmento->forAll(s | s.linea->includes (self.linea))->asSequence()->first().viaNormalOcupada) or
+        (not self.direccionNormal and not self.estacion.segmento->forAll(s | s.lineaincludes(self.linea))->asSequence()->last().viaContrariaOcupada))
 
     context Tren inv DireccionValida:
         (not (self.linea.principio = self.estacion) or not self.direccionNormal) or 
