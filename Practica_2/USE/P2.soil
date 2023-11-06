@@ -61,8 +61,8 @@ reset
 !insert(L2,s4) into LineaSegmento
 !insert(L2,s5) into LineaSegmento
 
-!insert(L2,s8) into LineaSegmento
-!insert(L2,s9) into LineaSegmento
+!insert(L3,s8) into LineaSegmento
+!insert(L3,s9) into LineaSegmento
 !insert(L3,sa) into LineaSegmento
 
 -----------------------------------------------------------------------
@@ -86,5 +86,15 @@ reset
 !insert(e6,L2) into FinalDe
 !insert(e6,L3) into FinalDe
 
+--------------------------------------------------------------------------
+
+!insert(TL1_1, e4) into Estaciona
+!insert(TL1_2, e4) into Estaciona
+
+!insert(TL2_1, e4) into Estaciona
+!insert(TL2_2, e4) into Estaciona
+
+!insert(TL3_1, e4) into Estaciona
+!insert(TL3_2, e4) into Estaciona
 
 check

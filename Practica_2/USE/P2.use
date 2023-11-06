@@ -96,8 +96,8 @@ constraints
     context Tren inv PuedeCircular:
         (not self.averiado) and (self.segmento = null) and
         
-        ((self.direccionNormal and not self.estacion.segmento->forAll(s | s.linea->includes (self.linea))->asSequence()->first().viaNormalOcupada) or
-        (not self.direccionNormal and not self.estacion.segmento->forAll(s | s.lineaincludes(self.linea))->asSequence()->last().viaContrariaOcupada))
+        ((self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->first().viaNormalOcupada) or
+        (not self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->last().viaContrariaOcupada))
 
     context Tren inv DireccionValida:
         (not (self.linea.principio = self.estacion) or not self.direccionNormal) or 
