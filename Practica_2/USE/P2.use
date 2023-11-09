@@ -33,22 +33,18 @@ class Tren < ActiveObject
         cont: Integer init = 0
         direccionNormal : Boolean init: true
         averiado : Boolean init: false
-        isMoving : Boolean init: false
     operations     
         move()
             begin
-                self.isMoving:=true;
                 self.cont:=0;
                 delete(self, self.estacion) from Estaciona;
             end
             pre PuedeCircular: ((not self.averiado) and (self.segmento = null) and
                 ((self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->first().viaNormalOcupada) or
                 (not self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->last().viaContrariaOcupada)))
-            pre noSeMueve: not self.isMoving
             pre minutoEstacionado: self.cont = 1
         stop()
             begin
-                self.isMoving:=false;
                 self.cont:=0;
                 delete(self, self.segmento) from Circula;
             end
@@ -73,13 +69,37 @@ class Tren < ActiveObject
                 end;
                 self.stop();
             end
+            pre circulando: self.segmento <> null
             pre dosMinutos: self.cont = 2
         tick()
             begin
-                if self.isMoving then 
+                if self.segmento <> null then 
                     self.cont:= self.cont + self.clock.resolution;
-                end
+                end;
             end
+  statemachines
+    psm TrenMovimiento
+      states
+        s: initial 
+        estacionado [self.segmento = null]
+        circulando [self.segmento <> null]   
+      transitions
+        s -> estacionado {create}
+        estacionado -> estacionado {tick()}
+        estacionado -> circulando { [(not self.averiado) and ((self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->first().viaNormalOcupada) or (not self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->last().viaContrariaOcupada)) and self.cont = 1] move() }
+        circulando -> circulando {tick()}
+        circulando -> estacionado { [self.cont = 2] avanzaEstacion() }
+    end
+    psm TrenDisponibilidad
+        states
+        s: initial
+        disponible [self.averiado = false]
+        averiado [self.averiado = true]
+        transitions
+        s -> disponible {create}
+        disponible -> averiado {seAveria()}
+        averiado -> disponible {seRepara()}
+    end
 end
 
 class Segmento
@@ -95,6 +115,8 @@ end
 class Linea
     
 end
+
+
 
 aggregation LineaSegmento between
     Linea [*] role linea

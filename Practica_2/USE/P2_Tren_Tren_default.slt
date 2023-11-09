@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram_Layout version="13">
+    <diagramOptions>
+        <autolayout>false</autolayout>
+        <antialiasing>true</antialiasing>
+        <showassocnames>false</showassocnames>
+        <showattributes>true</showattributes>
+        <showmultiplicities>false</showmultiplicities>
+        <showoperations>false</showoperations>
+        <showrolenames>true</showrolenames>
+        <showgrid>false</showgrid>
+    </diagramOptions>
+    <node id="Estacionado" sizeCalculated="true" type="StateNode">
+        <name>Estacionado</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+            <x>323.0454348462226</x>
+            <y>52.97239065847512</y>
+        </strategy>
+        <showInvariant>true</showInvariant>
+        <hidden>false</hidden>
+    </node>
+    <node height="14.0" id="s" sizeCalculated="false"
+        type="PseudoStateNode" width="14.0">
+        <name>s</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+            <x>175.0143603096625</x>
+            <y>76.4057453858425</y>
+        </strategy>
+        <node id="s::StateName" sizeCalculated="true" type="StateName">
+            <name>s</name>
+            <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToCorner">
+                <userOffsetX>0.0</userOffsetX>
+                <userOffsetY>0.0</userOffsetY>
+                <basisDeltaX>ABSOLUTE</basisDeltaX>
+                <deltaX>0.0</deltaX>
+                <maxDeltaX>1.7976931348623157E308</maxDeltaX>
+                <basisDeltaY>ABSOLUTE</basisDeltaY>
+                <deltaY>10.0</deltaY>
+                <maxDeltaY>1.7976931348623157E308</maxDeltaY>
+                <corner>NORTH</corner>
+                <relativeNodeId>s</relativeNodeId>
+            </strategy>
+            <hidden>false</hidden>
+        </node>
+        <hidden>false</hidden>
+    </node>
+    <node id="Circulando" sizeCalculated="true" type="StateNode">
+        <name>Circulando</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+            <x>319.44024553432234</x>
+            <y>348.12186395568233</y>
+        </strategy>
+        <showInvariant>true</showInvariant>
+        <hidden>false</hidden>
+    </node>
+    <edge type="Transition">
+        <source>Circulando</source>
+        <target>Estacionado</target>
+        <name>[((self.segmento &lt;&gt; null) and (self.cont = 2))] avanzaEstacion()/</name>
+        <waypoints>
+            <edgeproperty
+                id="transition::Circulando::Estacionado::::WayPoint::0"
+                sizeCalculated="true" type="WayPoint"
+                userDefined="false" visible="true">
+                <name>0</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+                    <userOffsetX>0.0</userOffsetX>
+                    <userOffsetY>0.0</userOffsetY>
+                </strategy>
+                <id>0</id>
+                <specialid>1</specialid>
+                <hidden>false</hidden>
+            </edgeproperty>
+            <edgeproperty
+                id="transition::Circulando::Estacionado::::WayPoint::1"
+                sizeCalculated="true" type="WayPoint"
+                userDefined="false" visible="true">
+                <name>1</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+                    <userOffsetX>0.0</userOffsetX>
+                    <userOffsetY>0.0</userOffsetY>
+                </strategy>
+                <id>1</id>
+                <specialid>2</specialid>
+                <hidden>false</hidden>
+            </edgeproperty>
+        </waypoints>
+        <hidden>false</hidden>
+        <Transitions>
+            <Transition>
+                <trigger>avanzaEstacion()</trigger>
+                <guard>((self.segmento &lt;&gt; null) and (self.cont = 2))</guard>
+                <post/>
+                <edgeproperty
+                    id="[((self.segmento &lt;> null) and (self.cont = 2))] avanzaEstacion()/"
+                    sizeCalculated="true" type="TransitionLabel"
+                    userDefined="true" visible="true">
+                    <name>[((self.segmento &lt;&gt; null) and (self.cont = 2))] avanzaEstacion()/</name>
+                    <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+                        <userOffsetX>170.0</userOffsetX>
+                        <userOffsetY>56.0</userOffsetY>
+                        <offsetX>0.0</offsetX>
+                        <offsetY>10.0</offsetY>
+                        <related length="2">
+                            <related0>transition::Circulando::Estacionado::::WayPoint::0</related0>
+                            <related1>transition::Circulando::Estacionado::::WayPoint::1</related1>
+                        </related>
+                    </strategy>
+                    <hidden>false</hidden>
+                </edgeproperty>
+            </Transition>
+        </Transitions>
+    </edge>
+    <edge type="Transition">
+        <source>Estacionado</source>
+        <target>Circulando</target>
+        <name>[(((not self.averiado and (self.segmento = null)) and ((self.direccionNormal and not self.estacion.segmento-&gt;select(s : Segmento | s.linea-&gt;includes(self.linea))-&gt;asSequence-&gt;first.viaNormalOcupada) or (not self.direccionNormal and not self.estacion.segmento-&gt;select(s : Segmento | s.linea-&gt;includes(self.linea))-&gt;asSequence-&gt;last.viaContrariaOcupada))) and (self.cont = 1))] move()/</name>
+        <waypoints>
+            <edgeproperty
+                id="transition::Estacionado::Circulando::::WayPoint::0"
+                sizeCalculated="true" type="WayPoint"
+                userDefined="false" visible="true">
+                <name>0</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+                    <userOffsetX>0.0</userOffsetX>
+                    <userOffsetY>0.0</userOffsetY>
+                </strategy>
+                <id>0</id>
+                <specialid>1</specialid>
+                <hidden>false</hidden>
+            </edgeproperty>
+            <edgeproperty
+                id="transition::Estacionado::Circulando::::WayPoint::1"
+                sizeCalculated="true" type="WayPoint"
+                userDefined="false" visible="true">
+                <name>1</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+                    <userOffsetX>0.0</userOffsetX>
+                    <userOffsetY>0.0</userOffsetY>
+                </strategy>
+                <id>1</id>
+                <specialid>2</specialid>
+                <hidden>false</hidden>
+            </edgeproperty>
+        </waypoints>
+        <hidden>false</hidden>
+        <Transitions>
+            <Transition>
+                <trigger>move()</trigger>
+                <guard>(((not self.averiado and (self.segmento = null)) and ((self.direccionNormal and not self.estacion.segmento-&gt;select(s : Segmento | s.linea-&gt;includes(self.linea))-&gt;asSequence-&gt;first.viaNormalOcupada) or (not self.direccionNormal and not self.estacion.segmento-&gt;select(s : Segmento | s.linea-&gt;includes(self.linea))-&gt;asSequence-&gt;last.viaContrariaOcupada))) and (self.cont = 1))</guard>
+                <post/>
+                <edgeproperty
+                    id="[(((not self.averiado and (self.segmento = null)) and ((self.direccionNormal and not self.estacion.segmento->select(s : Segmento | s.linea->includes(self.linea))->asSequence->first.viaNormalOcupada) or (not self.direccionNormal and not self.estacion.segmento->select(s : Segmento | s.linea->includes(self.linea))->asSequence->last.viaContrariaOcupada))) and (self.cont = 1))] move()/"
+                    sizeCalculated="true" type="TransitionLabel"
+                    userDefined="true" visible="true">
+                    <name>[(((not self.averiado and (self.segmento = null)) and ((self.direccionNormal and not self.estacion.segmento-&gt;select(s : Segmento | s.linea-&gt;includes(self.linea))-&gt;asSequence-&gt;first.viaNormalOcupada) or (not self.direccionNormal and not self.estacion.segmento-&gt;select(s : Segmento | s.linea-&gt;includes(self.linea))-&gt;asSequence-&gt;last.viaContrariaOcupada))) and (self.cont = 1))] move()/</name>
+                    <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+                        <userOffsetX>-179.0</userOffsetX>
+                        <userOffsetY>-7.0</userOffsetY>
+                        <offsetX>0.0</offsetX>
+                        <offsetY>10.0</offsetY>
+                        <related length="2">
+                            <related0>transition::Estacionado::Circulando::::WayPoint::0</related0>
+                            <related1>transition::Estacionado::Circulando::::WayPoint::1</related1>
+                        </related>
+                    </strategy>
+                    <hidden>false</hidden>
+                </edgeproperty>
+            </Transition>
+        </Transitions>
+    </edge>
+    <edge type="Transition">
+        <source>s</source>
+        <target>Estacionado</target>
+        <name>create/</name>
+        <waypoints>
+            <edgeproperty id="transition::s::Estacionado::::WayPoint::0"
+                sizeCalculated="true" type="WayPoint"
+                userDefined="false" visible="true">
+                <name>0</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+                    <userOffsetX>0.0</userOffsetX>
+                    <userOffsetY>0.0</userOffsetY>
+                </strategy>
+                <id>0</id>
+                <specialid>1</specialid>
+                <hidden>false</hidden>
+            </edgeproperty>
+            <edgeproperty id="transition::s::Estacionado::::WayPoint::1"
+                sizeCalculated="true" type="WayPoint"
+                userDefined="false" visible="true">
+                <name>1</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+                    <userOffsetX>0.0</userOffsetX>
+                    <userOffsetY>0.0</userOffsetY>
+                </strategy>
+                <id>1</id>
+                <specialid>2</specialid>
+                <hidden>false</hidden>
+            </edgeproperty>
+        </waypoints>
+        <hidden>false</hidden>
+        <Transitions>
+            <Transition>
+                <trigger>create</trigger>
+                <guard/>
+                <post/>
+                <edgeproperty id="create/" sizeCalculated="true"
+                    type="TransitionLabel" userDefined="false" visible="true">
+                    <name>create/</name>
+                    <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+                        <userOffsetX>0.0</userOffsetX>
+                        <userOffsetY>0.0</userOffsetY>
+                        <offsetX>0.0</offsetX>
+                        <offsetY>10.0</offsetY>
+                        <related length="2">
+                            <related0>transition::s::Estacionado::::WayPoint::0</related0>
+                            <related1>transition::s::Estacionado::::WayPoint::1</related1>
+                        </related>
+                    </strategy>
+                    <hidden>false</hidden>
+                </edgeproperty>
+            </Transition>
+        </Transitions>
+    </edge>
+</diagram_Layout>
