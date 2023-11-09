@@ -1,26 +1,26 @@
 model P2
 
-class Clock
-    attributes
-
-        NOW: Integer init = 0
-        resolution: Integer init = 1
-        cont: Integer init = 0
-
-    operations
-        tick()
-            begin
-                self.NOW := self.NOW + self.resolution;
-                for o in self.ao do
-                    o.tick()
-                end;
-            end
-        run(n:Integer)
-            begin
-                for i in Sequence{1..n} do
-                    self.tick()
-                end
-            end
+class Clock 
+  attributes
+    NOW : Integer init = 0 -- POSIX representation starting at 0
+    resolution: Integer init = 1 
+  operations
+    tick() 
+      begin
+        self.NOW:=self.NOW + self.resolution;
+        for o in self.ao do 
+            o.tick()
+        end;
+      end
+      post TimePasses: self.NOW = self.NOW@pre + self.resolution
+    run (n:Integer)
+      begin
+        for i in Sequence{1..n} do
+          self.tick()
+        end 
+      end
+  constraints
+    inv PositiveResolution: self.resolution > 0
 end
 
 abstract class ActiveObject
@@ -73,9 +73,17 @@ class Tren < ActiveObject
             pre dosMinutos: self.cont = 2
         tick()
             begin
-                if self.segmento <> null then 
-                    self.cont:= self.cont + self.clock.resolution;
+                self.cont:= self.cont + self.clock.resolution;
+                if self.segmento <> null and self.cont = 2 then 
+                    self.avanzaEstacion();
                 end;
+                if ((not self.averiado) and (self.segmento = null) and
+                ((self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->first().viaNormalOcupada) or
+                (not self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->last().viaContrariaOcupada)))
+                and self.cont = 1 then
+                    self.move();
+            end;
+
             end
   statemachines
     psm TrenMovimiento

@@ -27,6 +27,8 @@ reset
 !new Tren('TL3_1')
 !new Tren('TL3_2')
 
+-------------------------------------------------------------------------
+
 !insert(s0,e4) into SegmentoEstacion
 !insert(s0,e1) into SegmentoEstacion
 
@@ -51,7 +53,7 @@ reset
 !insert(sa,e5) into SegmentoEstacion
 !insert(sa,e6) into SegmentoEstacion
 
-----------------------------------------------------------------------
+-------------------------------------------------------------------------
 
 !insert(L1,s0) into LineaSegmento
 !insert(L1,s1) into LineaSegmento
@@ -65,7 +67,7 @@ reset
 !insert(L3,s9) into LineaSegmento
 !insert(L3,sa) into LineaSegmento
 
------------------------------------------------------------------------
+-------------------------------------------------------------------------
 
 !insert(TL1_1,L1) into PerteneceA
 !insert(TL1_2,L1) into PerteneceA
@@ -86,15 +88,30 @@ reset
 !insert(e6,L2) into FinalDe
 !insert(e6,L3) into FinalDe
 
---------------------------------------------------------------------------
+-------------------------------------------------------------------------
 
 !insert(TL1_1, e4) into Estaciona
-!insert(TL1_2, e4) into Estaciona
+!insert(TL1_2, e3) into Estaciona
 
 !insert(TL2_1, e4) into Estaciona
-!insert(TL2_2, e4) into Estaciona
+!insert(TL2_2, e6) into Estaciona
 
 !insert(TL3_1, e4) into Estaciona
-!insert(TL3_2, e4) into Estaciona
+!insert(TL3_2, e6) into Estaciona
 
 check
+
+-------------------------------------------------------------------------
+
+!new Clock('c')
+
+!insert (c, TL1_1) into Time
+!insert (c, TL1_2) into Time
+
+!insert (c, TL2_1) into Time
+!insert (c, TL2_2) into Time
+
+!insert (c, TL3_1) into Time
+!insert (c, TL3_2) into Time
+
+-------------------------------------------------------------------------
