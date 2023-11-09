@@ -47,10 +47,7 @@ class Tren < ActiveObject
                 end;
                 delete(self, self.estacion) from Estaciona;
             end
-            pre PuedeCircular: ((not self.averiado) and (self.segmento = null) and
-                ((self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->first().viaNormalOcupada) or
-                (not self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->last().viaContrariaOcupada)))
-            pre minutoEstacionado: self.cont = 1
+            pre minutoEstacionado: self.cont >= 1
         stop()
             begin
                 self.cont:=0;
@@ -87,10 +84,7 @@ class Tren < ActiveObject
                 if self.segmento <> null and self.cont = 2 then 
                     self.avanzaEstacion();
                 end;
-                if ((not self.averiado) and (self.segmento = null) and
-                ((self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->first().viaNormalOcupada) or
-                (not self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->last().viaContrariaOcupada)))
-                and self.cont = 1 then
+                if  self.cont = 1 then
                     self.move();
             end;
 
@@ -100,11 +94,11 @@ class Tren < ActiveObject
       states
         s: initial 
         estacionado [self.segmento = null]
-        circulando [self.segmento <> null]   
+        circulando [self.segmento <> null]  
       transitions
         s -> estacionado {create}
-        estacionado -> estacionado {tick()}
-        --estacionado -> circulando { [(not self.averiado) and ((self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->first().viaNormalOcupada) or (not self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->last().viaContrariaOcupada)) and self.cont = 1] move() }
+        estacionado -> circulando {tick()}
+        estacionado -> circulando { [ self.cont = 1] move() }
         circulando -> circulando {tick()}
         circulando -> estacionado { [self.cont = 2] avanzaEstacion() }
     end
