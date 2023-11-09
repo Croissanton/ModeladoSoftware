@@ -99,8 +99,6 @@ reset
 !insert(TL3_1, e4) into Estaciona
 !insert(TL3_2, e6) into Estaciona
 
-check
-
 -------------------------------------------------------------------------
 
 !new Clock('c')
@@ -114,4 +112,7 @@ check
 !insert (c, TL3_1) into Time
 !insert (c, TL3_2) into Time
 
--------------------------------------------------------------------------
+check
+
+
+
