@@ -31,10 +31,10 @@ end
 class Tren < ActiveObject
     attributes
         cont: Integer init = 0
-        direccionNormal : Boolean init: true
+        direccionNormal : Boolean
         averiado : Boolean init: false
     operations
-        siguienteViaLibre(): Boolean = (self.direccionNormal implies not self.estacion.segmentoOrig->select(s | s.linea->includes(self.linea))->asSequence->first().viaNormalOcupada) or 
+        siguienteViaLibre(): Boolean = (self.direccionNormal implies not self.estacion.segmentoOrig->select(s | s.linea->includes(self.linea))->asSequence->first().viaNormalOcupada) and 
         (not self.direccionNormal implies not self.estacion.segmentoDest->select(s | s.linea->includes(self.linea))->asSequence->first().viaContrariaOcupada)
         move()
             begin
@@ -50,7 +50,7 @@ class Tren < ActiveObject
                 delete(self, self.estacion) from Estaciona;
             end
             pre PuedeCircular: (not self.averiado) and (self.segmento = null) and self.siguienteViaLibre()
-            pre minutoEstacionado: self.cont = 1
+            pre minutoEstacionado: self.cont >= 1
         stop()
             begin
                 self.cont:=0;
@@ -83,7 +83,7 @@ class Tren < ActiveObject
                 self.stop();
             end
             pre circulando: self.segmento <> null
-            pre dosMinutos: self.cont = 2
+            pre dosMinutos: self.cont >= 2
         tick()
             begin
                 self.cont:= self.cont + self.clock.resolution;

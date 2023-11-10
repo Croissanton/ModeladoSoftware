@@ -12,20 +12,28 @@ reset
 !new Segmento('s2')
 !new Segmento('s4')
 !new Segmento('s5')
---!new Segmento('s8')
---!new Segmento('s9')
---!new Segmento('sa')
+!new Segmento('s8')
+!new Segmento('s9')
+!new Segmento('sa')
 
 !new Linea('L1')
---!new Linea('L2')
---!new Linea('L3')
+!new Linea('L2')
+!new Linea('L3')
 
 !new Tren('TL1_1')
--- !new Tren('TL1_2')
--- !new Tren('TL2_1')
--- !new Tren('TL2_2')
--- !new Tren('TL3_1')
--- !new Tren('TL3_2')
+!TL1_1.direccionNormal := true
+!new Tren('TL1_2')
+!TL1_2.direccionNormal := false
+
+!new Tren('TL2_1')
+!TL2_1.direccionNormal := true
+!new Tren('TL2_2')
+!TL2_2.direccionNormal := false
+
+!new Tren('TL3_1')
+!TL3_1.direccionNormal := true
+!new Tren('TL3_2')
+!TL3_2.direccionNormal := false
 
 -------------------------------------------------------------------------
 
@@ -44,14 +52,14 @@ reset
 !insert(s5,e5) into SegmentoEstacionOrigen
 !insert(s5,e6) into SegmentoEstacionDestino
 
---!insert(s8,e4) into SegmentoEstacion
---!insert(s8,e8) into SegmentoEstacion
+!insert(s8,e4) into SegmentoEstacionOrigen
+!insert(s8,e8) into SegmentoEstacionDestino
 
---!insert(s9,e8) into SegmentoEstacion
---!insert(s9,e5) into SegmentoEstacion
+!insert(s9,e8) into SegmentoEstacionOrigen
+!insert(s9,e5) into SegmentoEstacionDestino
 
---!insert(sa,e5) into SegmentoEstacion
---!insert(sa,e6) into SegmentoEstacion
+!insert(sa,e5) into SegmentoEstacionOrigen
+!insert(sa,e6) into SegmentoEstacionDestino
 
 -------------------------------------------------------------------------
 
@@ -59,24 +67,24 @@ reset
 !insert(L1,s1) into LineaSegmento
 !insert(L1,s2) into LineaSegmento
 
---!insert(L2,s0) into LineaSegmento
---!insert(L2,s4) into LineaSegmento
---!insert(L2,s5) into LineaSegmento
+!insert(L2,s0) into LineaSegmento
+!insert(L2,s4) into LineaSegmento
+!insert(L2,s5) into LineaSegmento
 
---!insert(L3,s8) into LineaSegmento
---!insert(L3,s9) into LineaSegmento
---!insert(L3,sa) into LineaSegmento
+!insert(L3,s8) into LineaSegmento
+!insert(L3,s9) into LineaSegmento
+!insert(L3,sa) into LineaSegmento
 
 -------------------------------------------------------------------------
 
 !insert(TL1_1,L1) into PerteneceA
--- !insert(TL1_2,L1) into PerteneceA
+!insert(TL1_2,L1) into PerteneceA
 
--- !insert(TL2_1,L2) into PerteneceA
--- !insert(TL2_2,L2) into PerteneceA
+!insert(TL2_1,L2) into PerteneceA
+!insert(TL2_2,L2) into PerteneceA
 
--- !insert(TL3_1,L3) into PerteneceA
--- !insert(TL3_2,L3) into PerteneceA
+!insert(TL3_1,L3) into PerteneceA
+!insert(TL3_2,L3) into PerteneceA
 
 -------------------------------------------------------------------------
 
@@ -91,13 +99,13 @@ reset
 -------------------------------------------------------------------------
 
 !insert(TL1_1, e4) into Estaciona
--- !insert(TL1_2, e3) into Estaciona
+!insert(TL1_2, e3) into Estaciona
 
--- !insert(TL2_1, e4) into Estaciona
--- !insert(TL2_2, e6) into Estaciona
+!insert(TL2_1, e4) into Estaciona
+!insert(TL2_2, e6) into Estaciona
 
--- !insert(TL3_1, e4) into Estaciona
--- !insert(TL3_2, e6) into Estaciona
+!insert(TL3_1, e4) into Estaciona
+!insert(TL3_2, e6) into Estaciona
 
 -------------------------------------------------------------------------
 
