@@ -10,24 +10,6 @@
         <showrolenames>true</showrolenames>
         <showgrid>false</showgrid>
     </diagramOptions>
-    <node id="disponible" sizeCalculated="true" type="StateNode">
-        <name>disponible</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
-            <x>11.837163283090934</x>
-            <y>86.79633199722223</y>
-        </strategy>
-        <showInvariant>true</showInvariant>
-        <hidden>false</hidden>
-    </node>
-    <node id="averiado" sizeCalculated="true" type="StateNode">
-        <name>averiado</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
-            <x>68.35392920046843</x>
-            <y>68.53724164238417</y>
-        </strategy>
-        <showInvariant>true</showInvariant>
-        <hidden>false</hidden>
-    </node>
     <node height="14.0" id="s" sizeCalculated="false"
         type="PseudoStateNode" width="14.0">
         <name>s</name>
@@ -53,62 +35,24 @@
         </node>
         <hidden>false</hidden>
     </node>
-    <edge type="Transition">
-        <source>averiado</source>
-        <target>disponible</target>
-        <name>seRepara()/</name>
-        <waypoints>
-            <edgeproperty
-                id="transition::averiado::disponible::::WayPoint::0"
-                sizeCalculated="true" type="WayPoint"
-                userDefined="false" visible="true">
-                <name>0</name>
-                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
-                    <userOffsetX>0.0</userOffsetX>
-                    <userOffsetY>0.0</userOffsetY>
-                </strategy>
-                <id>0</id>
-                <specialid>1</specialid>
-                <hidden>false</hidden>
-            </edgeproperty>
-            <edgeproperty
-                id="transition::averiado::disponible::::WayPoint::1"
-                sizeCalculated="true" type="WayPoint"
-                userDefined="false" visible="true">
-                <name>1</name>
-                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
-                    <userOffsetX>0.0</userOffsetX>
-                    <userOffsetY>0.0</userOffsetY>
-                </strategy>
-                <id>1</id>
-                <specialid>2</specialid>
-                <hidden>false</hidden>
-            </edgeproperty>
-        </waypoints>
+    <node id="disponible" sizeCalculated="true" type="StateNode">
+        <name>disponible</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+            <x>11.837163283090934</x>
+            <y>86.79633199722223</y>
+        </strategy>
+        <showInvariant>true</showInvariant>
         <hidden>false</hidden>
-        <Transitions>
-            <Transition>
-                <trigger>seRepara()</trigger>
-                <guard/>
-                <post/>
-                <edgeproperty id="seRepara()/" sizeCalculated="true"
-                    type="TransitionLabel" userDefined="false" visible="true">
-                    <name>seRepara()/</name>
-                    <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
-                        <userOffsetX>0.0</userOffsetX>
-                        <userOffsetY>0.0</userOffsetY>
-                        <offsetX>0.0</offsetX>
-                        <offsetY>10.0</offsetY>
-                        <related length="2">
-                            <related0>transition::averiado::disponible::::WayPoint::0</related0>
-                            <related1>transition::averiado::disponible::::WayPoint::1</related1>
-                        </related>
-                    </strategy>
-                    <hidden>false</hidden>
-                </edgeproperty>
-            </Transition>
-        </Transitions>
-    </edge>
+    </node>
+    <node id="averiado" sizeCalculated="true" type="StateNode">
+        <name>averiado</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+            <x>68.35392920046843</x>
+            <y>68.53724164238417</y>
+        </strategy>
+        <showInvariant>true</showInvariant>
+        <hidden>false</hidden>
+    </node>
     <edge type="Transition">
         <source>s</source>
         <target>disponible</target>
@@ -212,6 +156,62 @@
                         <related length="2">
                             <related0>transition::disponible::averiado::::WayPoint::0</related0>
                             <related1>transition::disponible::averiado::::WayPoint::1</related1>
+                        </related>
+                    </strategy>
+                    <hidden>false</hidden>
+                </edgeproperty>
+            </Transition>
+        </Transitions>
+    </edge>
+    <edge type="Transition">
+        <source>averiado</source>
+        <target>disponible</target>
+        <name>seRepara()/</name>
+        <waypoints>
+            <edgeproperty
+                id="transition::averiado::disponible::::WayPoint::0"
+                sizeCalculated="true" type="WayPoint"
+                userDefined="false" visible="true">
+                <name>0</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+                    <userOffsetX>0.0</userOffsetX>
+                    <userOffsetY>0.0</userOffsetY>
+                </strategy>
+                <id>0</id>
+                <specialid>1</specialid>
+                <hidden>false</hidden>
+            </edgeproperty>
+            <edgeproperty
+                id="transition::averiado::disponible::::WayPoint::1"
+                sizeCalculated="true" type="WayPoint"
+                userDefined="false" visible="true">
+                <name>1</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+                    <userOffsetX>0.0</userOffsetX>
+                    <userOffsetY>0.0</userOffsetY>
+                </strategy>
+                <id>1</id>
+                <specialid>2</specialid>
+                <hidden>false</hidden>
+            </edgeproperty>
+        </waypoints>
+        <hidden>false</hidden>
+        <Transitions>
+            <Transition>
+                <trigger>seRepara()</trigger>
+                <guard/>
+                <post/>
+                <edgeproperty id="seRepara()/" sizeCalculated="true"
+                    type="TransitionLabel" userDefined="false" visible="true">
+                    <name>seRepara()/</name>
+                    <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+                        <userOffsetX>0.0</userOffsetX>
+                        <userOffsetY>0.0</userOffsetY>
+                        <offsetX>0.0</offsetX>
+                        <offsetY>10.0</offsetY>
+                        <related length="2">
+                            <related0>transition::averiado::disponible::::WayPoint::0</related0>
+                            <related1>transition::averiado::disponible::::WayPoint::1</related1>
                         </related>
                     </strategy>
                     <hidden>false</hidden>

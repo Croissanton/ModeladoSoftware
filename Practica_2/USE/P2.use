@@ -33,23 +33,23 @@ class Tren < ActiveObject
         cont: Integer init = 0
         direccionNormal : Boolean init: true
         averiado : Boolean init: false
-    operations     
+    operations
+        siguienteViaLibre(): Boolean = (self.direccionNormal implies not self.estacion.segmentoOrig->select(s | s.linea->includes(self.linea))->asSequence->first().viaNormalOcupada) or 
+        (not self.direccionNormal implies not self.estacion.segmentoDest->select(s | s.linea->includes(self.linea))->asSequence->first().viaContrariaOcupada)
         move()
             begin
                 self.cont:=0;
                 if (self.direccionNormal) then
-                    insert(self, self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->first()) into Circula;
+                    insert(self, self.estacion.segmentoOrig->select(s | s.linea->includes(self.linea))->asSequence->first()) into Circula;
                     self.segmento.viaNormalOcupada := true;
                 end;
                 if (not self.direccionNormal) then
-                    insert(self, self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->last()) into Circula;
+                    insert(self, self.estacion.segmentoDest->select(s | s.linea->includes(self.linea))->asSequence()->first()) into Circula;
                     self.segmento.viaContrariaOcupada := true;
                 end;
                 delete(self, self.estacion) from Estaciona;
             end
-            pre PuedeCircular: ((not self.averiado) and (self.segmento = null) and
-                ((self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->first().viaNormalOcupada) or
-                (not self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->last().viaContrariaOcupada)))
+            pre PuedeCircular: (not self.averiado) and (self.segmento = null) and self.siguienteViaLibre()
             pre minutoEstacionado: self.cont = 1
         stop()
             begin
@@ -68,14 +68,17 @@ class Tren < ActiveObject
         avanzaEstacion()
             begin
                 if (self.direccionNormal or self.linea.principio = self.estacion) then
-                    insert(self, self.segmento.estacion->asSequence()->last()) into Estaciona;
-                    self.direccionNormal := true;
+                    insert(self, self.segmento.estacionDestino) into Estaciona;
                     self.segmento.viaNormalOcupada := false;
-                end;
-                if (not self.direccionNormal or self.linea.final = self.estacion) then
-                    insert(self, self.segmento.estacion->asSequence()->first()) into Estaciona;
-                    self.direccionNormal := false;
+                else
+                    insert(self, self.segmento.estacionOrigen) into Estaciona;
                     self.segmento.viaContrariaOcupada := false;
+                end;
+                if (self.linea.principio = self.estacion) then
+                self.direccionNormal := true;
+                end;
+                if (self.linea.final = self.estacion) then
+                self.direccionNormal := false;
                 end;
                 self.stop();
             end
@@ -84,15 +87,12 @@ class Tren < ActiveObject
         tick()
             begin
                 self.cont:= self.cont + self.clock.resolution;
-                if self.segmento <> null and self.cont = 2 then 
+                if self.segmento <> null and self.cont >= 2 then 
                     self.avanzaEstacion();
                 end;
-                if ((not self.averiado) and (self.segmento = null) and
-                ((self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->first().viaNormalOcupada) or
-                (not self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->last().viaContrariaOcupada)))
-                and self.cont = 1 then
+                if (not self.averiado) and (self.segmento = null) and self.siguienteViaLibre() and self.cont >= 1 then
                     self.move();
-            end;
+                end;
 
             end
   statemachines
@@ -104,9 +104,9 @@ class Tren < ActiveObject
       transitions
         s -> estacionado {create}
         estacionado -> estacionado {tick()}
-        --estacionado -> circulando { [(not self.averiado) and ((self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->first().viaNormalOcupada) or (not self.direccionNormal and not self.estacion.segmento->select(s | s.linea->includes(self.linea))->asSequence()->last().viaContrariaOcupada)) and self.cont = 1] move() }
+        estacionado -> circulando { [not self.averiado and self.segmento = null and self.siguienteViaLibre() and self.cont = 1] tick() }
         circulando -> circulando {tick()}
-        circulando -> estacionado { [self.cont = 2] avanzaEstacion() }
+        circulando -> estacionado { [self.cont = 2] tick() }
     end
     psm TrenDisponibilidad
         states
@@ -141,9 +141,14 @@ aggregation LineaSegmento between
     Segmento [*] role segmento
 end
 
-aggregation SegmentoEstacion between
-    Segmento [*] role segmento
-    Estacion [2] role estacion
+aggregation SegmentoEstacionOrigen between
+    Segmento [*] role segmentoOrig
+    Estacion [1] role estacionOrigen
+end
+
+aggregation SegmentoEstacionDestino between
+    Segmento [*] role segmentoDest
+    Estacion [1] role estacionDestino
 end
 
 association Circula between
@@ -178,7 +183,7 @@ end
 
 constraints
     context Segmento inv LineasDistintas:
-        self.estacion->asSequence()->at(1).segmento->intersection(self.estacion->asSequence()->at(2).segmento)->forAll(s1, s2 | s1 = s2 or s1.linea <> s2.linea)
+        self.estacionOrigen.segmentoOrig->intersection(self.estacionDestino.segmentoDest)->forAll(s1, s2 | s1 = s2 or s1.linea <> s2.linea)
 
 
 --    context Tren inv PuedeCircular:
