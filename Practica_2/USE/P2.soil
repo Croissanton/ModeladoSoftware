@@ -5,22 +5,16 @@ reset
 !new Estacion('e4')
 !new Estacion('e5')
 !new Estacion('e6')
-!new Estacion('e7')
 !new Estacion('e8')
-!new Estacion('e9')
 
 !new Segmento('s0')
 !new Segmento('s1')
 !new Segmento('s2')
-!new Segmento('s3')
 !new Segmento('s4')
 !new Segmento('s5')
-!new Segmento('s6')
-!new Segmento('s7')
 !new Segmento('s8')
 !new Segmento('s9')
 !new Segmento('sa')
-!new Segmento('sb')
 
 !new Linea('L1')
 !new Linea('L2')
@@ -52,20 +46,11 @@ reset
 !insert(s2,e2) into SegmentoEstacionOrigen
 !insert(s2,e3) into SegmentoEstacionDestino
 
-!insert(s3,e3) into SegmentoEstacionOrigen
-!insert(s3,e7) into SegmentoEstacionDestino
-
 !insert(s4,e1) into SegmentoEstacionOrigen
 !insert(s4,e5) into SegmentoEstacionDestino
 
 !insert(s5,e5) into SegmentoEstacionOrigen
 !insert(s5,e6) into SegmentoEstacionDestino
-
-!insert(s6,e6) into SegmentoEstacionOrigen
-!insert(s6,e9) into SegmentoEstacionDestino
-
-!insert(s7,e9) into SegmentoEstacionOrigen
-!insert(s7,e7) into SegmentoEstacionDestino
 
 !insert(s8,e4) into SegmentoEstacionOrigen
 !insert(s8,e8) into SegmentoEstacionDestino
@@ -76,26 +61,19 @@ reset
 !insert(sa,e5) into SegmentoEstacionOrigen
 !insert(sa,e6) into SegmentoEstacionDestino
 
-!insert(sb,e6) into SegmentoEstacionOrigen
-!insert(sb,e7) into SegmentoEstacionDestino
-
 -------------------------------------------------------------------------
 
 !insert(L1,s0) into LineaSegmento
 !insert(L1,s1) into LineaSegmento
 !insert(L1,s2) into LineaSegmento
-!insert(L1,s3) into LineaSegmento
 
 !insert(L2,s0) into LineaSegmento
 !insert(L2,s4) into LineaSegmento
 !insert(L2,s5) into LineaSegmento
-!insert(L2,s6) into LineaSegmento
-!insert(L2,s7) into LineaSegmento
 
 !insert(L3,s8) into LineaSegmento
 !insert(L3,s9) into LineaSegmento
 !insert(L3,sa) into LineaSegmento
-!insert(L3,sb) into LineaSegmento
 
 -------------------------------------------------------------------------
 
@@ -114,9 +92,9 @@ reset
 !insert(e4,L2) into PrincipioDe
 !insert(e4,L3) into PrincipioDe
 
-!insert(e7,L1) into FinalDe
-!insert(e7,L2) into FinalDe
-!insert(e7,L3) into FinalDe
+!insert(e3,L1) into FinalDe
+!insert(e6,L2) into FinalDe
+!insert(e6,L3) into FinalDe
 
 -------------------------------------------------------------------------
 
@@ -143,6 +121,3 @@ reset
 !insert (c, TL3_2) into Time
 
 check
-
-
-
