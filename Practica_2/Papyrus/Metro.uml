@@ -177,18 +177,18 @@ this.NOW+=1;
     <region xmi:type="uml:Region" xmi:id="_UTNSAH7xEe6RCt0bR8EdTQ" name="Region5">
       <transition xmi:type="uml:Transition" xmi:id="_CzPLcH8CEe6RCt0bR8EdTQ" source="__zCw4H8BEe6RCt0bR8EdTQ" target="_or9gkH8BEe6RCt0bR8EdTQ"/>
       <transition xmi:type="uml:Transition" xmi:id="_HjVdYH8CEe6RCt0bR8EdTQ" guard="_vd3wsIFbEe64sq-2p5bzJw" source="_or9gkH8BEe6RCt0bR8EdTQ" target="_psCdgH8BEe6RCt0bR8EdTQ">
-        <ownedRule xmi:type="uml:Constraint" xmi:id="_vd3wsIFbEe64sq-2p5bzJw" name="!averiado and segmento == null and siguienteViaLibre() and cont == 1">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_vd3wsIFbEe64sq-2p5bzJw" name="!averiado and segmento == null and siguienteViaLibre()">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_vd3wsYFbEe64sq-2p5bzJw" name="ex1" behavior="_QD0HoHP0Ee6SjryEz5qKHg">
             <language>Natural language</language>
-            <body>[!averiado and segmento == null and siguienteViaLibre() and cont == 1] tick()</body>
+            <body>[!averiado and segmento == null and siguienteViaLibre()] tick()</body>
           </specification>
         </ownedRule>
       </transition>
       <transition xmi:type="uml:Transition" xmi:id="_IFz4UH8CEe6RCt0bR8EdTQ" guard="_4D-D0IFbEe64sq-2p5bzJw" source="_psCdgH8BEe6RCt0bR8EdTQ" target="_or9gkH8BEe6RCt0bR8EdTQ">
-        <ownedRule xmi:type="uml:Constraint" xmi:id="_4D-D0IFbEe64sq-2p5bzJw" name="cont == 2">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_4D-D0IFbEe64sq-2p5bzJw" name="cont >= 1">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_72HfwIFbEe64sq-2p5bzJw" name="ex2" behavior="_QD0HoHP0Ee6SjryEz5qKHg">
             <language>Natural language</language>
-            <body>[[self.cont == 2] tick()]</body>
+            <body>[[self.cont >= 1] tick()]</body>
           </specification>
         </ownedRule>
       </transition>
