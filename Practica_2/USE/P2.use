@@ -93,7 +93,6 @@ class Tren < ActiveObject
                 if (not self.averiado) and (self.segmento = null) and self.siguienteViaLibre() and self.cont >= 1 then
                     self.move();
                 end;
-
             end
   statemachines
     psm TrenMovimiento
@@ -104,9 +103,9 @@ class Tren < ActiveObject
       transitions
         s -> estacionado {create}
         estacionado -> estacionado {tick()}
-        estacionado -> circulando { [not self.averiado and self.segmento = null and self.siguienteViaLibre() and self.cont = 1] tick() }
+        estacionado -> circulando { [not self.averiado and self.segmento = null and self.siguienteViaLibre()] tick() }
         circulando -> circulando {tick()}
-        circulando -> estacionado { [self.cont = 2] tick() }
+        circulando -> estacionado { [self.cont = 1] tick() }
     end
     psm TrenDisponibilidad
         states
