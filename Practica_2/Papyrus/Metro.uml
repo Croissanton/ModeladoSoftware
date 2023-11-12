@@ -4,10 +4,10 @@
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
   <packagedElement xmi:type="uml:Class" xmi:id="_K_RzkHPwEe6SjryEz5qKHg" name="Segmento" visibility="public">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_kLFswHl3Ee6KJcfN6nutjA" name="viaNormalOcupada" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_kLFswHl3Ee6KJcfN6nutjA" name="viaNormalOcupada" visibility="public" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_swNIcHl3Ee6KJcfN6nutjA" name="viaContrariaOcupada" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_swNIcHl3Ee6KJcfN6nutjA" name="viaContrariaOcupada" visibility="public" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
   </packagedElement>
@@ -15,19 +15,69 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_onUPcHPwEe6SjryEz5qKHg" name="Estacion" visibility="public"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_qCChAHPwEe6SjryEz5qKHg" name="Tren" visibility="public">
     <generalization xmi:type="uml:Generalization" xmi:id="_7AQDsHPyEe6SjryEz5qKHg" general="_s0QJ8HPwEe6SjryEz5qKHg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_yeJisHl3Ee6KJcfN6nutjA" name="direccionNormal" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_yeJisHl3Ee6KJcfN6nutjA" name="direccionNormal" visibility="public" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_TG64UIFSEe64sq-2p5bzJw" name="cont" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_Y-DDwIFSEe64sq-2p5bzJw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_jgiLEIFSEe64sq-2p5bzJw" name="averiado" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_jV8PMIFTEe64sq-2p5bzJw" name="siguienteViaLibre" specification="_vE1UsIFSEe64sq-2p5bzJw" isReentrant="false" body="">
+      <language>JAVA</language>
+    </ownedBehavior>
+    <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_ijByQIFYEe64sq-2p5bzJw" name="move" specification="_kr-1EIFTEe64sq-2p5bzJw" isReentrant="false" language="" body=""/>
+    <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_vVbGsIFYEe64sq-2p5bzJw" name="stop" specification="_nf7KEIFYEe64sq-2p5bzJw" isReentrant="false"/>
+    <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_2muxIIFYEe64sq-2p5bzJw" name="seRepara" specification="_w4DXEIFYEe64sq-2p5bzJw" isReentrant="false"/>
+    <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_-nkbEIFYEe64sq-2p5bzJw" name="seAveria" specification="_3j-cgIFYEe64sq-2p5bzJw" isReentrant="false"/>
+    <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_PXgjIIFZEe64sq-2p5bzJw" name="avanzaEstacion" specification="_ImsWoIFZEe64sq-2p5bzJw" isReentrant="false"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_vE1UsIFSEe64sq-2p5bzJw" name="siguienteViaLibre" method="_jV8PMIFTEe64sq-2p5bzJw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_kr-1EIFTEe64sq-2p5bzJw" name="move" method="_ijByQIFYEe64sq-2p5bzJw" precondition="_7AH90IFZEe64sq-2p5bzJw _9EkvkIFeEe64sq-2p5bzJw">
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_7AH90IFZEe64sq-2p5bzJw" name="puedeCircular">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_IV1d4IFeEe64sq-2p5bzJw" name="puedeCiruclar" behavior="_ijByQIFYEe64sq-2p5bzJw">
+          <language>Natural language</language>
+          <body>!averiado and this.segmento == null and siguienteViaLibre()</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_9EkvkIFeEe64sq-2p5bzJw" name="minutoEstacionado">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_Aj8ZcIFfEe64sq-2p5bzJw" name="minutoEstacionado">
+          <language>Natural language</language>
+          <body>this.cont >= 1</body>
+        </specification>
+      </ownedRule>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_nf7KEIFYEe64sq-2p5bzJw" name="stop" method="_vVbGsIFYEe64sq-2p5bzJw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_w4DXEIFYEe64sq-2p5bzJw" name="seRepara" method="_2muxIIFYEe64sq-2p5bzJw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_3j-cgIFYEe64sq-2p5bzJw" name="seAveria" method="_-nkbEIFYEe64sq-2p5bzJw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="__XA7AIFYEe64sq-2p5bzJw" name="tick" method="_QD0HoHP0Ee6SjryEz5qKHg"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_ImsWoIFZEe64sq-2p5bzJw" name="avanzaEstacion" method="_PXgjIIFZEe64sq-2p5bzJw" precondition="_GOtWIIFaEe64sq-2p5bzJw _HWIe8IFfEe64sq-2p5bzJw">
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_GOtWIIFaEe64sq-2p5bzJw" name="circulando">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_hHCtsIFeEe64sq-2p5bzJw" name="segmento != null" behavior="_PXgjIIFZEe64sq-2p5bzJw">
+          <language>Natural language</language>
+          <body>this.segmento != null</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_HWIe8IFfEe64sq-2p5bzJw" name="dosMinutosEstacionado">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_KtCJUIFfEe64sq-2p5bzJw" name="dosMinutosEstacionado">
+          <language>Natural language</language>
+          <body>this.cont >= 2</body>
+        </specification>
+      </ownedRule>
+    </ownedOperation>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_s0QJ8HPwEe6SjryEz5qKHg" name="ActiveObject" visibility="public"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_s0QJ8HPwEe6SjryEz5qKHg" name="ActiveObject" visibility="public">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_zitqsIFREe64sq-2p5bzJw" name="tick" concurrency="concurrent"/>
+  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_tcJ3cHPwEe6SjryEz5qKHg" name="Clock" visibility="public">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_dcCtAHP0Ee6SjryEz5qKHg" name="NOW" visibility="protected">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_dcCtAHP0Ee6SjryEz5qKHg" name="NOW" visibility="public">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_nBqjcHP0Ee6SjryEz5qKHg" name="resolution" visibility="protected" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_nBqjcHP0Ee6SjryEz5qKHg" name="resolution" visibility="public" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
-    <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_QD0HoHP0Ee6SjryEz5qKHg" name="tick" specification="_rmgAkHP0Ee6SjryEz5qKHg" isReentrant="false">
+    <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_QD0HoHP0Ee6SjryEz5qKHg" name="tick" specification="__XA7AIFYEe64sq-2p5bzJw" isReentrant="false">
       <language>JAVA</language>
       <body>TimeUnit.MINUTES.sleep(1);
 this.NOW+=1;
@@ -36,8 +86,8 @@ this.NOW+=1;
     <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_p40hUHP1Ee6SjryEz5qKHg" name="run" specification="_xRHaAHP0Ee6SjryEz5qKHg" isReentrant="false" body="">
       <language>JAVA</language>
     </ownedBehavior>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_rmgAkHP0Ee6SjryEz5qKHg" name="tick" visibility="protected" concurrency="concurrent" method="_QD0HoHP0Ee6SjryEz5qKHg"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_xRHaAHP0Ee6SjryEz5qKHg" name="run" visibility="protected" concurrency="concurrent" method="_p40hUHP1Ee6SjryEz5qKHg"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_rmgAkHP0Ee6SjryEz5qKHg" name="tick" visibility="public" concurrency="concurrent"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_xRHaAHP0Ee6SjryEz5qKHg" name="run" visibility="public" concurrency="concurrent" method="_p40hUHP1Ee6SjryEz5qKHg"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_Sx8zwHPyEe6SjryEz5qKHg" name="Estaciona" visibility="public" memberEnd="_Sx9a0nPyEe6SjryEz5qKHg _Sx-B4nPyEe6SjryEz5qKHg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Sx9a0HPyEe6SjryEz5qKHg" source="org.eclipse.papyrus">
@@ -126,17 +176,34 @@ this.NOW+=1;
     </ownedEnd>
     <ownedEnd xmi:type="uml:Property" xmi:id="_lFylAHl4Ee6KJcfN6nutjA" name="principio" type="_onUPcHPwEe6SjryEz5qKHg" association="_lFwIwHl4Ee6KJcfN6nutjA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:StateMachine" xmi:id="_ANALAH7sEe6RCt0bR8EdTQ" name="Tren Movimiento State Machine" visibility="public">
-    <region xmi:type="uml:Region" xmi:id="_YUg9kH7sEe6RCt0bR8EdTQ" name="Region2">
-      <subvertex xmi:type="uml:State" xmi:id="_2Li3sH7sEe6RCt0bR8EdTQ" name="averiado"/>
-    </region>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_ANALAH7sEe6RCt0bR8EdTQ" name="Tren Movimiento State Machine" visibility="public" isReentrant="false">
     <region xmi:type="uml:Region" xmi:id="_UTNSAH7xEe6RCt0bR8EdTQ" name="Region5">
       <transition xmi:type="uml:Transition" xmi:id="_CzPLcH8CEe6RCt0bR8EdTQ" source="__zCw4H8BEe6RCt0bR8EdTQ" target="_or9gkH8BEe6RCt0bR8EdTQ"/>
-      <transition xmi:type="uml:Transition" xmi:id="_HjVdYH8CEe6RCt0bR8EdTQ" source="_or9gkH8BEe6RCt0bR8EdTQ" target="_psCdgH8BEe6RCt0bR8EdTQ"/>
-      <transition xmi:type="uml:Transition" xmi:id="_IFz4UH8CEe6RCt0bR8EdTQ" source="_psCdgH8BEe6RCt0bR8EdTQ" target="_or9gkH8BEe6RCt0bR8EdTQ"/>
-      <transition xmi:type="uml:Transition" xmi:id="_JceJQH8CEe6RCt0bR8EdTQ" source="_or9gkH8BEe6RCt0bR8EdTQ" target="_or9gkH8BEe6RCt0bR8EdTQ"/>
-      <transition xmi:type="uml:Transition" xmi:id="_MzXMkH8CEe6RCt0bR8EdTQ" source="_psCdgH8BEe6RCt0bR8EdTQ" target="_psCdgH8BEe6RCt0bR8EdTQ"/>
-      <subvertex xmi:type="uml:State" xmi:id="_or9gkH8BEe6RCt0bR8EdTQ" name="estacionado"/>
+      <transition xmi:type="uml:Transition" xmi:id="_HjVdYH8CEe6RCt0bR8EdTQ" guard="_vd3wsIFbEe64sq-2p5bzJw" source="_or9gkH8BEe6RCt0bR8EdTQ" target="_psCdgH8BEe6RCt0bR8EdTQ">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_vd3wsIFbEe64sq-2p5bzJw" name="!averiado and segmento == null and siguienteViaLibre() and cont == 1">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_vd3wsYFbEe64sq-2p5bzJw" name="ex1" behavior="_QD0HoHP0Ee6SjryEz5qKHg">
+            <language>Natural language</language>
+            <body>[not self.averiado and self.segmento = null and self.siguienteViaLibre() and self.cont = 1] tick()</body>
+          </specification>
+        </ownedRule>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_IFz4UH8CEe6RCt0bR8EdTQ" guard="_4D-D0IFbEe64sq-2p5bzJw" source="_psCdgH8BEe6RCt0bR8EdTQ" target="_or9gkH8BEe6RCt0bR8EdTQ">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_4D-D0IFbEe64sq-2p5bzJw" name="cont == 2">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_72HfwIFbEe64sq-2p5bzJw" name="ex2" behavior="_QD0HoHP0Ee6SjryEz5qKHg">
+            <language>Natural language</language>
+            <body>[[self.cont = 2] tick()]</body>
+          </specification>
+        </ownedRule>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_Oym3kIFfEe64sq-2p5bzJw" name="tickEstacionado" source="_or9gkH8BEe6RCt0bR8EdTQ" target="_or9gkH8BEe6RCt0bR8EdTQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_kIxHYIFgEe64sq-2p5bzJw" name="tickCirculando" source="_psCdgH8BEe6RCt0bR8EdTQ" target="_psCdgH8BEe6RCt0bR8EdTQ"/>
+      <subvertex xmi:type="uml:State" xmi:id="_or9gkH8BEe6RCt0bR8EdTQ" name="estacionado" stateInvariant="_MQWTAIFbEe64sq-2p5bzJw">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_MQWTAIFbEe64sq-2p5bzJw" name="existeTren">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_7L4lEIFdEe64sq-2p5bzJw" name="trenNotNull" body="">
+            <language>Natural language</language>
+          </specification>
+        </ownedRule>
+      </subvertex>
       <subvertex xmi:type="uml:State" xmi:id="_psCdgH8BEe6RCt0bR8EdTQ" name="circulando"/>
       <subvertex xmi:type="uml:Pseudostate" xmi:id="__zCw4H8BEe6RCt0bR8EdTQ" name="estado inicial"/>
     </region>
