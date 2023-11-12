@@ -51,6 +51,8 @@ class Tren < ActiveObject
             end
             pre puedeCircular: (not self.averiado) and (self.segmento = null) and self.siguienteViaLibre()
             pre minutoEstacionado: self.cont >= 1
+            post circula: self.segmento <> null
+            post noEstacionado: self.estacion = null
         stop()
             begin
                 self.cont:=0;
@@ -58,19 +60,22 @@ class Tren < ActiveObject
             end
             pre circulando: self.segmento <> null
             pre dosMinutos: self.cont >= 2
+            post noCircula: self.segmento = null
         seAveria()
             begin
                 self.averiado:=true;
             end
             pre disponible: not self.averiado
+            post averiado: self.averiado
         seRepara()
             begin
                 self.averiado:=false;
             end
             pre averiado: self.averiado
+            post reparado: not self.averiado
         avanzaEstacion()
             begin
-                if (self.direccionNormal or self.linea.principio = self.estacion) then
+                if (self.direccionNormal) then
                     insert(self, self.segmento.estacionDestino) into Estaciona;
                     self.segmento.viaNormalOcupada := false;
                 else
@@ -106,9 +111,9 @@ class Tren < ActiveObject
       transitions
         s -> estacionado {create}
         estacionado -> estacionado {tick()}
-        estacionado -> circulando { [not self.averiado and self.segmento = null and self.siguienteViaLibre()] tick() }
+        estacionado -> circulando { [not self.averiado and self.segmento = null and self.siguienteViaLibre()] tick()}
         circulando -> circulando {tick()}
-        circulando -> estacionado { [self.cont = 1] tick() }
+        circulando -> estacionado { [self.cont >= 1] tick()}
     end
     psm TrenDisponibilidad
         states
