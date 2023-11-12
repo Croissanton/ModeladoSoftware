@@ -149,12 +149,12 @@ aggregation LineaSegmento between
 end
 
 aggregation SegmentoEstacionOrigen between
-    Segmento [*] role segmentoOrig
+    Segmento [1..*] role segmentoOrig
     Estacion [1] role estacionOrigen
 end
 
 aggregation SegmentoEstacionDestino between
-    Segmento [*] role segmentoDest
+    Segmento [1..*] role segmentoDest
     Estacion [1] role estacionDestino
 end
 
