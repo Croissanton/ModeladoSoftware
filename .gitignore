@@ -1,0 +1,6 @@
+#Visual Paradigm
+
+*.bak*
+
+#mac
+.DS_Store
