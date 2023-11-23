@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39f83281-91ea-4ace-8790-2bf4564b782e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Activo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ActivoInterfaz.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MedioPensionista.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pensionista.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PensionistaInterfaz.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trabajador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Activo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Activo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ActivoInterfaz.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MedioPensionista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MedioPensionista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pensionista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pensionista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PensionistaInterfaz.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Trabajador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Trabajador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
