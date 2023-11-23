@@ -15,7 +15,7 @@ public class Profesional {
         accesos.remove(a);
     }
 
-    public Enumeration<Acceso> getAccesos() {
+    protected Enumeration<Acceso> getAccesos() {
         return Collections.enumeration(accesos);
     }
 

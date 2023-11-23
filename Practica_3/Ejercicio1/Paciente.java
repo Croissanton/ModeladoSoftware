@@ -8,13 +8,13 @@ public class Paciente {
         assert e != null;
 
         this.expedientes = new ArrayList<Expediente>();
-        this.setExpedienteAbierto(e);
+        this.addExpediente(e);
     }
 
-    protected void setExpedienteAbierto(Expediente e) {
+    private void addExpediente(Expediente e) {
         assert e != null && expedienteAbierto == null;
 
-        this.expedientes.add(e);
+        this.addExpediente(e);
         this.expedienteAbierto = e;
     }
 
@@ -24,11 +24,28 @@ public class Paciente {
         this.expedienteAbierto = null;
     }
 
-    public Enumeration<Expediente> getExpedientes() {
+    protected Enumeration<Expediente> getExpedientes() {
         return Collections.enumeration(expedientes);
     }
 
-    public Expediente getExpedienteAbierto() {
+    protected Expediente getExpedienteAbierto() {
         return expedienteAbierto;
+    }
+
+    protected boolean notDuplicatedExpediente() {
+        Enumeration<Expediente> it1 = this.getExpedientes();
+        Enumeration<Expediente> it2 = this.getExpedientes();
+
+        while (it1.hasMoreElements()) {
+            Expediente e1 = it1.nextElement();
+            while (it2.hasMoreElements()) {
+                Expediente e2 = it2.nextElement();
+                if (e1 != e2 && e1 == e2) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 }

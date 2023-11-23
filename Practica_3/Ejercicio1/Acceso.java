@@ -15,23 +15,23 @@ public class Acceso {
         assert p.notDuplicatedAcceso();
     }
 
-    public Profesional getProfesional() {
-        return profesional;
+    protected Profesional getProfesional() {
+        return this.profesional;
     }
 
-    public Expediente getExpediente() {
-        return expediente;
+    protected Expediente getExpediente() {
+        return this.expediente;
     }
 
-    public Date getDate() {
-        return fecha;
+    protected Date getDate() {
+        return this.fecha;
     }
 
-    public TipoAcceso getTipo() {
-        return tipo;
+    protected TipoAcceso getTipo() {
+        return this.tipo;
     }
 
     private enum TipoAcceso {
-        CONSULTA, MODIFICACION, CREACION, ARCHIVO;
+        consulta, modificacion, creacion, archivo;
     }
 }
