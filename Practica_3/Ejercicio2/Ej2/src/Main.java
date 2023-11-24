@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        Trabajador activo = new Activo("Juan", "123456789", 1000);
-        Trabajador pensionista = new Pensionista("Pedro", "987654321", 1000);
+        Trabajador activo = new Activo("Juan", "1234569789", 1000);
+        Trabajador pensionista = new Pensionista("Pedro", "9876954321", 1000);
         System.out.println("salario activo: " + activo.nomina());
         System.out.println("salario pensionista: " + pensionista.nomina());
         activo.incrementar();
