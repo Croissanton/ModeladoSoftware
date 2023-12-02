@@ -13,7 +13,7 @@ public class Pieza {
     }
 
     protected void setBandeja(Bandeja bandeja) {
-        assert bandeja != null;
+        assert (bandeja != null);
         this.bandeja = bandeja;
     }
 

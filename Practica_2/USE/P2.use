@@ -194,4 +194,4 @@ constraints
 
     context Tren inv DireccionValida:
         (self.linea.principio = self.estacion implies self.direccionNormal) and
-        (self.linea.final = self.estacion implies not self.direccionNormal) 
+        (self.linea.final = self.estacion implies not self.direccionNormal)
