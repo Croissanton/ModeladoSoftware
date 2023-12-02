@@ -5,21 +5,21 @@ public class Paciente {
     private Expediente expedienteAbierto;
 
     public Paciente(Expediente e) {
-        assert e != null;
+        assert (e != null);
 
         this.expedientes = new ArrayList<Expediente>();
         this.addExpediente(e);
     }
 
     private void addExpediente(Expediente e) {
-        assert e != null && expedienteAbierto == null;
+        assert (e != null && expedienteAbierto == null);
 
         this.addExpediente(e);
         this.expedienteAbierto = e;
     }
 
     protected void closeExpedienteAbierto() {
-        assert expedienteAbierto != null;
+        assert (expedienteAbierto != null);
 
         this.expedienteAbierto = null;
     }
@@ -40,7 +40,7 @@ public class Paciente {
             Expediente e1 = it1.nextElement();
             while (it2.hasMoreElements()) {
                 Expediente e2 = it2.nextElement();
-                if (e1 != e2 && e1 == e2) {
+                if (e1.equals(e2)) {
                     return false;
                 }
             }

@@ -4,7 +4,7 @@ public class MedioPensionista extends Trabajador{
 
     public MedioPensionista(Activo activo, Pensionista pensionista){
         super(activo.getNombre(), activo.getNumeroSeguridadSocial(), activo.nomina()+pensionista.nomina());
-        assert activo.getNumeroSeguridadSocial().equals(pensionista.getNumeroSeguridadSocial());
+        assert (activo.getNumeroSeguridadSocial().equals(pensionista.getNumeroSeguridadSocial()));
         this.activo = activo;
         this.pensionista = pensionista;
     }

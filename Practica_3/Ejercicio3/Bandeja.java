@@ -11,13 +11,13 @@ public class Bandeja {
     }
 
     public void put(Pieza p) {
-        assert this.getEstado() != Estados.full;
+        assert (this.getEstado() != Estados.full);
         this.piezas[this.numPiezas] = p;
         this.numPiezas++;
     }
 
     public Pieza get() {
-        assert this.getEstado() != Estados.empty;
+        assert (this.getEstado() != Estados.empty);
         return this.piezas[--this.numPiezas];
     }
 
@@ -30,7 +30,7 @@ public class Bandeja {
     }
 
     private Pieza[] getPiezas() {
-        assert this.getEstado() != Estados.empty;
+        assert (this.getEstado() != Estados.empty);
         return this.piezas;
     }
 

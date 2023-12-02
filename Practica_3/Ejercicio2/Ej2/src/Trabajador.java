@@ -4,26 +4,32 @@ public abstract class Trabajador{
     private double salario;
 
     public Trabajador(String nombre, String numeroSeguridadSocial, double salario) {
-        this.nombre=nombre;
+        assert (salario>0);
+		assert (nombre!=null);
+		assert (numeroSeguridadSocial!=null);
+		this.nombre=nombre;
         this.numeroSeguridadSocial=numeroSeguridadSocial;
-        this.salario=salario;
+        setSalario(salario);
+		
     }
 
     public double nomina(){
+		
         return this.salario;
     }
 
     abstract public void incrementar();
 
     protected void setSalario(double salario){
+        assert (salario>0);
         this.salario = salario;
     }
 
     protected String getNumeroSeguridadSocial() {
-        return numeroSeguridadSocial;
+        return this.numeroSeguridadSocial;
     }
 
     protected String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 }
