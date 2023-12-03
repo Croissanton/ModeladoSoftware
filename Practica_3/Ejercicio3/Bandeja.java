@@ -5,7 +5,7 @@ public class Bandeja {
     private final int CAPACIDAD;
     private enum Estados {empty, normal, full};
     public Bandeja(int CAPACIDAD) {
-        assert CAPACIDAD > 0;
+        assert (CAPACIDAD > 0);
         this.CAPACIDAD = CAPACIDAD;
     }
 
