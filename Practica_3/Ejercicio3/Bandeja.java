@@ -12,26 +12,26 @@ public class Bandeja {
     }
 
     public void put(Pieza p) {
-        estado.put(this, p);
+        this.estado.put(this, p);
     }
 
     public Pieza get() {
-        return estado.get(this);
+        return this.estado.get(this);
     }
 
     protected void setEstado(BandejaEstado estado) {
         this.estado = estado;
     }
     protected BandejaEstado getEstado() {
-        return estado;
+        return this.estado;
     }
 
     protected Queue<Pieza> getPiezas() {
-        return piezas;
+        return this.piezas;
     }
 
     protected int getCAPACIDAD() {
-        return CAPACIDAD;
+        return this.CAPACIDAD;
     }
 }
 

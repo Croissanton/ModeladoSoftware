@@ -9,7 +9,7 @@ public class Pieza {
     }
 
     public Bandeja getBandeja() {
-        return bandeja;
+        return this.bandeja;
     }
 
     protected void setBandeja(Bandeja bandeja) {
