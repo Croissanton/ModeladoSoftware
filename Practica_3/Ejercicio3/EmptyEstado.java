@@ -2,7 +2,7 @@ public class EmptyEstado implements BandejaEstado {
     @Override
     public void put(Bandeja bandeja, Pieza pieza) {
         bandeja.getPiezas().add(pieza);
-        updateState(bandeja);
+        updateEstado(bandeja);
     }
 
     @Override
@@ -11,9 +11,9 @@ public class EmptyEstado implements BandejaEstado {
     }
 
     @Override
-    public void updateState(Bandeja bandeja) {
+    public void updateEstado(Bandeja bandeja) {
         if (!bandeja.getPiezas().isEmpty()) {
-            bandeja.setState(new NormalEstado());
+            bandeja.setEstado(new NormalEstado());
         }
     }
 }

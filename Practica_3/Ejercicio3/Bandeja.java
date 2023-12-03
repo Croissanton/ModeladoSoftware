@@ -4,26 +4,26 @@ import java.util.Queue;
 public class Bandeja {
     private Queue<Pieza> piezas = new LinkedList<>();
     private final int CAPACIDAD;
-    private BandejaEstado state;
+    private BandejaEstado estado;
 
     public Bandeja(int capacidad) {
         this.CAPACIDAD = capacidad;
-        this.state = new EmptyEstado();
+        this.estado = new EmptyEstado();
     }
 
     public void put(Pieza p) {
-        state.put(this, p);
+        estado.put(this, p);
     }
 
     public Pieza get() {
-        return state.get(this);
+        return estado.get(this);
     }
 
-    protected void setState(BandejaEstado state) {
-        this.state = state;
+    protected void setEstado(BandejaEstado estado) {
+        this.estado = estado;
     }
     protected BandejaEstado getEstado() {
-        return state;
+        return estado;
     }
 
     protected Queue<Pieza> getPiezas() {
