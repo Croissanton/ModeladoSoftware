@@ -1,45 +1,34 @@
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class Bandeja {
-    private Queue<Pieza> piezas;
+    private Queue<Pieza> piezas = new LinkedList<>();
     private final int CAPACIDAD;
-    private enum Estados {empty, normal, full};
-    public Bandeja(int CAPACIDAD) {
-        assert (CAPACIDAD > 0);
-        this.CAPACIDAD = CAPACIDAD;
+    private BandejaEstado state;
+
+    public Bandeja(int capacidad) {
+        this.CAPACIDAD = capacidad;
+        this.state = new EmptyEstado();
     }
 
     public void put(Pieza p) {
-        assert (this.getEstado() != Estados.full);
-        this.piezas.add(p);
+        state.put(this, p);
     }
 
     public Pieza get() {
-        assert (this.getEstado() != Estados.empty);
-        return this.piezas.remove();
+        return state.get(this);
     }
 
-    public int size() {
-        return this.piezas.size();
+    protected void setState(BandejaEstado state) {
+        this.state = state;
     }
 
-    private int getCAPACIDAD() {
-        return this.CAPACIDAD;
+    protected Queue<Pieza> getPiezas() {
+        return piezas;
     }
 
-    private Queue<Pieza> getPiezas() {
-        assert (this.getEstado() != Estados.empty);
-        return this.piezas;
-    }
-
-    private Estados getEstado() {
-        assert (this.size() <= this.CAPACIDAD);
-        if (this.size() == 0) {
-            return Estados.empty;
-        } else if (this.size() == this.CAPACIDAD) {
-            return Estados.full;
-        } else {
-            return Estados.normal;
-        }
+    protected int getCAPACIDAD() {
+        return CAPACIDAD;
     }
 }
+

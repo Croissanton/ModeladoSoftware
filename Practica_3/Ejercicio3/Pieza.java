@@ -3,10 +3,10 @@ public class Pieza {
 
     public Pieza() {
     }
+
     public Pieza(Bandeja bandeja) {
         setBandeja(bandeja);
     }
-
 
     public Bandeja getBandeja() {
         return bandeja;
@@ -16,5 +16,4 @@ public class Pieza {
         assert (bandeja != null);
         this.bandeja = bandeja;
     }
-
 }
