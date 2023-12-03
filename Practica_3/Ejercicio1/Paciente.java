@@ -40,7 +40,7 @@ public class Paciente {
             Expediente e1 = it1.nextElement();
             while (it2.hasMoreElements()) {
                 Expediente e2 = it2.nextElement();
-                if (e1.equals(e2)) {
+                if (!e1.equals(e2) && (e1.getPaciente().equals(e2.getPaciente()) && e1.getAcceso() == e2.getAcceso())) {
                     return false;
                 }
             }

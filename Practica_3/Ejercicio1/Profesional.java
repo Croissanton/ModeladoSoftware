@@ -27,7 +27,7 @@ public class Profesional {
             Acceso a1 = it1.nextElement();
             while (it2.hasMoreElements()) {
                 Acceso a2 = it2.nextElement();
-                if (a1 != a2 && a1.getDate() == a2.getDate()) {
+                if (!a1.equals(a2) && a1.getDate() == a2.getDate()) {
                     return false;
                 }
             }
