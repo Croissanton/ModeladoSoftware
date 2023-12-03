@@ -12,8 +12,10 @@ public class Main {
         // Add pieces to the tray.
         bandeja.put(pieza1);
         System.out.println("Added piece 1: Tray should now be in Normal state.");
+        System.out.println("Tray is normal: " + bandeja.getEstado().getClass().getSimpleName());
         bandeja.put(pieza2);
         System.out.println("Added piece 2: Tray should still be in Normal state.");
+        System.out.println("Tray is normal: " + bandeja.getEstado().getClass().getSimpleName());
 
         // Attempt to add a third piece (should transition to FullState)
         try {
@@ -22,23 +24,28 @@ public class Main {
         } catch (IllegalStateException ise) {
             System.err.println(ise.getMessage());
         }
+        System.out.println("Tray is full: " + bandeja.getEstado().getClass().getSimpleName());
 
         // Attempt to add a fourth piece (should fail)
         try {
             bandeja.put(pieza4); // This should throw an exception since the tray is full.
         } catch (IllegalStateException ise) {
             System.err.println("Failed to add piece 4: " + ise.getMessage());
+            System.out.println("Tray is full: " + bandeja.getEstado().getClass().getSimpleName());
         }
 
         // Remove a piece (should transition back to NormalState)
-        Pieza removedPiece = bandeja.get();
+        bandeja.get();
         System.out.println("Removed a piece: Tray should now be in Normal state again.");
+        System.out.println("Tray is normal: " + bandeja.getEstado().getClass().getSimpleName());
 
         // Attempt to remove all pieces (should eventually become EmptyState)
         bandeja.get();
         System.out.println("Removed a piece: Should still be in Normal state.");
+        System.out.println("Tray is normal: " + bandeja.getEstado().getClass().getSimpleName());
         bandeja.get();
         System.out.println("Removed a piece: Tray should now be in Empty state.");
+        System.out.println("Tray is empty: " + bandeja.getEstado().getClass().getSimpleName());
 
         // Attempt to remove a piece from an empty tray (should fail)
         try {

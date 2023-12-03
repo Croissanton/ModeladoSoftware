@@ -22,6 +22,9 @@ public class Bandeja {
     protected void setState(BandejaEstado state) {
         this.state = state;
     }
+    protected BandejaEstado getEstado() {
+        return state;
+    }
 
     protected Queue<Pieza> getPiezas() {
         return piezas;
