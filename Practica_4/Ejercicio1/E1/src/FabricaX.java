@@ -1,22 +1,12 @@
 public class FabricaX {
-    public FabricaX(Cliente cliente) {
-        if (A) {
-            FabricaX1 f = new FabricaX1(cliente);
-            FabricaX2 f = new FabricaX2(cliente);
-        } else if (B){
-            FabricaX f = new FabricaX(cliente);
-        } else {
-            FabricaX2 f = new FabricaX2(cliente);
-        }
-    }
+    public FabricaX() {}
 
     public void rutina1() {
-        System.out.println("Hello world!");
+        System.out.println("Rutina1");
     }
 
     private int rutina4() {
+        System.out.println("Rutina4");
         return 0;
     }
-
-
 }
