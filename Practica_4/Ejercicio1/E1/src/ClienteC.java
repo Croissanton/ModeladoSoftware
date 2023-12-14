@@ -1,7 +1,7 @@
 public class ClienteC implements Cliente {
 
     public ClienteC() {
-        FabricaX3 fabrica = new FabricaX3();
+        FabricaXC fabrica = new FabricaXC();
         fabrica.rutina1();
         fabrica.rutina3(1);
     }

@@ -1,6 +1,6 @@
-public class FabricaX23 extends FabricaX {
+public class FabricaXA extends FabricaX {
 
-    public FabricaX23() {}
+    public FabricaXA() {}
 
     protected void rutina2(double y) {
         System.out.println("Rutina2");

@@ -1,6 +1,6 @@
-public class FabricaX3 extends FabricaX {
+public class FabricaXC extends FabricaX {
 
-    public FabricaX3() {}
+    public FabricaXC() {}
 
     protected boolean rutina3(int i) {
         System.out.println("Rutina3");

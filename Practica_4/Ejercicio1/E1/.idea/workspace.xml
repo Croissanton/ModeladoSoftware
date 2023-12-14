@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a3378088-cfcc-4afe-ac72-2b064bbaa6f0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FabricaX23.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FabricaX3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClienteA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClienteA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClienteB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClienteB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClienteC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClienteC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FabricaX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FabricaX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FabricaX1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FabricaX2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FabricaX2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FabricaX2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FabricaXB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FabricaX23.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FabricaXA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FabricaX3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FabricaXC.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

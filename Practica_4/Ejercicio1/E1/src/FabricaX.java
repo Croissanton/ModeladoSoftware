@@ -1,4 +1,4 @@
-public class FabricaX {
+public abstract class FabricaX {
     public FabricaX() {}
 
     public void rutina1() {
