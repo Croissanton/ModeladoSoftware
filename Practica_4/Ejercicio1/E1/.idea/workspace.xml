@@ -6,13 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="a3378088-cfcc-4afe-ac72-2b064bbaa6f0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClienteA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClienteA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClienteB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClienteB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClienteC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClienteC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FabricaX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FabricaX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FabricaX2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FabricaXB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FabricaX23.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FabricaXA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FabricaX3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FabricaXC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FabricaXA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FabricaXA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FabricaXB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FabricaXB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FabricaXC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FabricaXC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VP/E1.vpp" beforeDir="false" afterPath="$PROJECT_DIR$/../VP/E1.vpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,14 +42,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "G:/My Drive/clase/año3/mds/P/GIT/ModeladoSoftware/Practica_4/Ejercicio1/E1"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;G:/My Drive/clase/año3/mds/P/GIT/ModeladoSoftware/Practica_4/Ejercicio1/E1&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
